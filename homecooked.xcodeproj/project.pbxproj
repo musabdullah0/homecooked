@@ -15,6 +15,8 @@
 		D61D744D2714C90B00B38959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61D744B2714C90B00B38959 /* LaunchScreen.storyboard */; };
 		D61D74592714EC0000B38959 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74582714EC0000B38959 /* HomeViewController.swift */; };
 		D61D745D2714F28C00B38959 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D745C2714F28C00B38959 /* SettingsViewController.swift */; };
+		D61D74612715FA4B00B38959 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74602715FA4B00B38959 /* MealTableViewCell.swift */; };
+		D61D74652715FBF400B38959 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74642715FBF400B38959 /* Meal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		D61D744E2714C90B00B38959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D61D74582714EC0000B38959 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D61D745C2714F28C00B38959 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D61D74602715FA4B00B38959 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
+		D61D74642715FBF400B38959 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 		D61D743F2714C90100B38959 /* homecooked */ = {
 			isa = PBXGroup;
 			children = (
+				D61D74632715FBE600B38959 /* Models */,
+				D61D745F2715FA1000B38959 /* Cells */,
 				D61D74552714EA2C00B38959 /* Views */,
 				D61D74402714C90100B38959 /* AppDelegate.swift */,
 				D61D74422714C90100B38959 /* SceneDelegate.swift */,
@@ -75,6 +81,7 @@
 		D61D74552714EA2C00B38959 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D61D74672715FD6B00B38959 /* Settings */,
 				D61D74572714EBEC00B38959 /* Home */,
 			);
 			path = Views;
@@ -84,9 +91,32 @@
 			isa = PBXGroup;
 			children = (
 				D61D74582714EC0000B38959 /* HomeViewController.swift */,
-				D61D745C2714F28C00B38959 /* SettingsViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		D61D745F2715FA1000B38959 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D61D74602715FA4B00B38959 /* MealTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D61D74632715FBE600B38959 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D61D74642715FBF400B38959 /* Meal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D61D74672715FD6B00B38959 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D61D745C2714F28C00B38959 /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +191,8 @@
 			files = (
 				D61D74452714C90100B38959 /* ViewController.swift in Sources */,
 				D61D74412714C90100B38959 /* AppDelegate.swift in Sources */,
+				D61D74652715FBF400B38959 /* Meal.swift in Sources */,
+				D61D74612715FA4B00B38959 /* MealTableViewCell.swift in Sources */,
 				D61D74432714C90100B38959 /* SceneDelegate.swift in Sources */,
 				D61D745D2714F28C00B38959 /* SettingsViewController.swift in Sources */,
 				D61D74592714EC0000B38959 /* HomeViewController.swift in Sources */,
