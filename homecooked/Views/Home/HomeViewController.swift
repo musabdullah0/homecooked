@@ -9,9 +9,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var mealTableView: UITableView!
     @IBOutlet weak var postMealBtn: UIButton!
     var meals: [Meal] = []
+    var categories: [String] = ["All", "Nearby", "Cheap", "Healthy", "Asian", "Desi", "American", "Thai"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,4 +51,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
         
     }
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "category", for: indexPath) as! CategoryCollectionViewCell
+        cell.categoryLabel.text = categories[indexPath.row]
+        return cell
+    }
+    
+    
 }
