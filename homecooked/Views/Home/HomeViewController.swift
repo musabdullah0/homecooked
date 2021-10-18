@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class HomeViewController: UIViewController {
+    
+    var mealsRef: CollectionReference!
 
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var mealTableView: UITableView!
@@ -21,15 +25,70 @@ class HomeViewController: UIViewController {
         postMealBtn.clipsToBounds = true
         mealTableView.delegate = self
         mealTableView.dataSource = self
-        meals = createArray()
+        mealsRef = Firestore.firestore().collection("meals")
+        mealsRef.addSnapshotListener { (mealsSnapshot, error) in
+            self.mealSnapshotListener(mealsSnapshot: mealsSnapshot, error: error)
+
+        }
     }
     
-    func createArray() -> [Meal] {
-        let fettucini = Meal(image: UIImage(named: "fettuccine") ?? UIImage(), title: "Fettucini Alfredo", chefName: "Michael Scott")
-        let beets = Meal(image: UIImage(named: "beets") ?? UIImage(), title: "Roasted Beets", chefName: "Dwight Schrute")
-        let tuna = Meal(image: UIImage(named: "tuna") ?? UIImage(), title: "Tuna Sandwich", chefName: "Jim Halpert")
-        return [fettucini, beets, tuna]
+    func mealSnapshotListener(mealsSnapshot: QuerySnapshot?, error: Error?) {
+        guard let snapshot = mealsSnapshot else {
+            print("no meals?")
+            return
+        }
+        snapshot.documentChanges.forEach { diff in
+            if diff.type == .added {
+                let mealToAdd = Meal(withDoc: diff.document)
+                self.meals.append(mealToAdd)
+                print("adding \(mealToAdd)")
+                print(self.meals)
+            }
+            if (diff.type == .modified) {
+                let docId = diff.document.documentID
+                if let indexOfMealToModify = self.meals.firstIndex(where: { $0.meal_id == docId} ) {
+                    let mealToModify = self.meals[indexOfMealToModify]
+                    mealToModify.updateProperties(withDoc: diff.document)
+                }
+            }
+            if diff.type == .removed {
+                let docId = diff.document.documentID
+                if let indexOfMealToRemove = self.meals.firstIndex(where: { $0.meal_id == docId} ) {
+                    self.meals.remove(at: indexOfMealToRemove)
+                    print("removed: \(docId)")
+                }
+            }
+            DispatchQueue.main.async {
+                self.mealTableView.reloadData()
+            }
+        }
     }
+    
+    func getMeals() {
+        mealsRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                    let meal = Meal(withDoc: document)
+                    print("initing with \(meal)")
+                    self.meals.append(meal)
+                }
+                DispatchQueue.main.async {
+                    self.mealTableView.reloadData()
+                }
+                
+            }
+        }
+    }
+    
+//    func createArray() -> [Meal] {
+//        let fettucini = Meal(image: UIImage(named: "fettuccine") ?? UIImage(), title: "Fettucini Alfredo", chefName: "Michael Scott")
+//        let beets = Meal(image: UIImage(named: "beets") ?? UIImage(), title: "Roasted Beets", chefName: "Dwight Schrute")
+//        let tuna = Meal(image: UIImage(named: "tuna") ?? UIImage(), title: "Tuna Sandwich", chefName: "Jim Halpert")
+//        return [fettucini, beets, tuna]
+//    }
 
 }
 

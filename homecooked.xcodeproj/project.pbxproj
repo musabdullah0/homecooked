@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		497A3CEFBD61A6C92232838F /* Pods_homecooked.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B2668627446F7FD3D832EA /* Pods_homecooked.framework */; };
 		D61D74412714C90100B38959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74402714C90100B38959 /* AppDelegate.swift */; };
 		D61D74432714C90100B38959 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74422714C90100B38959 /* SceneDelegate.swift */; };
 		D61D74452714C90100B38959 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74442714C90100B38959 /* ViewController.swift */; };
@@ -18,9 +19,12 @@
 		D61D74612715FA4B00B38959 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74602715FA4B00B38959 /* MealTableViewCell.swift */; };
 		D61D74652715FBF400B38959 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74642715FBF400B38959 /* Meal.swift */; };
 		D61D746A2716565F00B38959 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */; };
+		D61D749D271DFCE000B38959 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D61D749C271DFCE000B38959 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7DBD206D39E981E6FDF06B76 /* Pods-homecooked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homecooked.release.xcconfig"; path = "Target Support Files/Pods-homecooked/Pods-homecooked.release.xcconfig"; sourceTree = "<group>"; };
+		C1B2668627446F7FD3D832EA /* Pods_homecooked.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_homecooked.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61D743D2714C90100B38959 /* homecooked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homecooked.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61D74402714C90100B38959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D61D74422714C90100B38959 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +38,8 @@
 		D61D74602715FA4B00B38959 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		D61D74642715FBF400B38959 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		D61D749C271DFCE000B38959 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E5FBEDA41626EC8F62F8C7FD /* Pods-homecooked.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homecooked.debug.xcconfig"; path = "Target Support Files/Pods-homecooked/Pods-homecooked.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +47,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497A3CEFBD61A6C92232838F /* Pods_homecooked.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		568854E913E974C346305339 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E5FBEDA41626EC8F62F8C7FD /* Pods-homecooked.debug.xcconfig */,
+				7DBD206D39E981E6FDF06B76 /* Pods-homecooked.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		72C92F84D301B45D7D019432 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1B2668627446F7FD3D832EA /* Pods_homecooked.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D61D74342714C90100B38959 = {
 			isa = PBXGroup;
 			children = (
 				D61D743F2714C90100B38959 /* homecooked */,
 				D61D743E2714C90100B38959 /* Products */,
+				568854E913E974C346305339 /* Pods */,
+				72C92F84D301B45D7D019432 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +103,7 @@
 				D61D74492714C90B00B38959 /* Assets.xcassets */,
 				D61D744B2714C90B00B38959 /* LaunchScreen.storyboard */,
 				D61D744E2714C90B00B38959 /* Info.plist */,
+				D61D749C271DFCE000B38959 /* GoogleService-Info.plist */,
 			);
 			path = homecooked;
 			sourceTree = "<group>";
@@ -129,9 +157,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D61D74512714C90B00B38959 /* Build configuration list for PBXNativeTarget "homecooked" */;
 			buildPhases = (
+				34A67DEF1561F67B505BFB39 /* [CP] Check Pods Manifest.lock */,
 				D61D74392714C90100B38959 /* Sources */,
 				D61D743A2714C90100B38959 /* Frameworks */,
 				D61D743B2714C90100B38959 /* Resources */,
+				BBE55DD323AA4FEBFCB3C2AF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -180,12 +210,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61D744D2714C90B00B38959 /* LaunchScreen.storyboard in Resources */,
+				D61D749D271DFCE000B38959 /* GoogleService-Info.plist in Resources */,
 				D61D744A2714C90B00B38959 /* Assets.xcassets in Resources */,
 				D61D74482714C90100B38959 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		34A67DEF1561F67B505BFB39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-homecooked-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBE55DD323AA4FEBFCB3C2AF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-homecooked/Pods-homecooked-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-homecooked/Pods-homecooked-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-homecooked/Pods-homecooked-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D61D74392714C90100B38959 /* Sources */ = {
@@ -343,6 +416,7 @@
 		};
 		D61D74522714C90B00B38959 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5FBEDA41626EC8F62F8C7FD /* Pods-homecooked.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -362,6 +436,7 @@
 		};
 		D61D74532714C90B00B38959 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DBD206D39E981E6FDF06B76 /* Pods-homecooked.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
