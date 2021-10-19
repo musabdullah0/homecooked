@@ -96,7 +96,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = mealTableView.dequeueReusableCell(withIdentifier: "MealCellIdentifier") as! MealTableViewCell
         
         let reference = storageRef.child("\(meal.meal_id).jpg")
-        cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage())
+        cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
         cell.mealTitle.text = meal.title
         cell.mealChefName.text = meal.chefName
         cell.mealDistance.text = "\(meal.distance) mi"
@@ -114,7 +114,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "category", for: indexPath) as! CategoryCollectionViewCell
-        cell.categoryLabel.text = categories[indexPath.row]
+        cell.categoryButton.setTitle(categories[indexPath.row], for: .normal)
         return cell
     }
     
