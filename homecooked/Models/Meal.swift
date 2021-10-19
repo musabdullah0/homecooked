@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 class Meal {
     var meal_id: String
-    var image: UIImage
+    var image: String
     var title: String
     var chefName: String // need to change to a relationship with a User object
     var distance: Int
@@ -25,7 +25,7 @@ class Meal {
         self.distance = withDoc.get("distance") as? Int ?? 0
         self.cost = withDoc.get("cost") as? Double ?? 1.0
         self.remaining = withDoc.get("remaining") as? Int ?? 0
-        self.image = UIImage()
+        self.image = "gs://homecooked-ios.appspot.com/\(withDoc.documentID).jpg"
     }
     
     func updateProperties(withDoc: QueryDocumentSnapshot) {
@@ -34,6 +34,7 @@ class Meal {
         self.distance = withDoc.get("distance") as? Int ?? 0
         self.cost = withDoc.get("cost") as? Double ?? 1.0
         self.remaining = withDoc.get("remaining") as? Int ?? 0
+        // if they change the image, the url should stay the same (caching problems maybe?)
     }
 }
 

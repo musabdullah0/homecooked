@@ -8,10 +8,13 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
+import FirebaseStorageUI
 
 class HomeViewController: UIViewController {
     
     var mealsRef: CollectionReference!
+    var storageRef: StorageReference!
 
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var mealTableView: UITableView!
@@ -30,6 +33,9 @@ class HomeViewController: UIViewController {
             self.mealSnapshotListener(mealsSnapshot: mealsSnapshot, error: error)
 
         }
+        let storage = Storage.storage()
+        storageRef = storage.reference()
+
     }
     
     func mealSnapshotListener(mealsSnapshot: QuerySnapshot?, error: Error?) {
@@ -41,8 +47,6 @@ class HomeViewController: UIViewController {
             if diff.type == .added {
                 let mealToAdd = Meal(withDoc: diff.document)
                 self.meals.append(mealToAdd)
-                print("adding \(mealToAdd)")
-                print(self.meals)
             }
             if (diff.type == .modified) {
                 let docId = diff.document.documentID
@@ -55,7 +59,6 @@ class HomeViewController: UIViewController {
                 let docId = diff.document.documentID
                 if let indexOfMealToRemove = self.meals.firstIndex(where: { $0.meal_id == docId} ) {
                     self.meals.remove(at: indexOfMealToRemove)
-                    print("removed: \(docId)")
                 }
             }
             DispatchQueue.main.async {
@@ -70,9 +73,7 @@ class HomeViewController: UIViewController {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
                     let meal = Meal(withDoc: document)
-                    print("initing with \(meal)")
                     self.meals.append(meal)
                 }
                 DispatchQueue.main.async {
@@ -82,13 +83,6 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
-//    func createArray() -> [Meal] {
-//        let fettucini = Meal(image: UIImage(named: "fettuccine") ?? UIImage(), title: "Fettucini Alfredo", chefName: "Michael Scott")
-//        let beets = Meal(image: UIImage(named: "beets") ?? UIImage(), title: "Roasted Beets", chefName: "Dwight Schrute")
-//        let tuna = Meal(image: UIImage(named: "tuna") ?? UIImage(), title: "Tuna Sandwich", chefName: "Jim Halpert")
-//        return [fettucini, beets, tuna]
-//    }
 
 }
 
@@ -101,7 +95,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let meal = meals[indexPath.row]
         let cell = mealTableView.dequeueReusableCell(withIdentifier: "MealCellIdentifier") as! MealTableViewCell
         
-        cell.mealImage.image = meal.image
+        let reference = storageRef.child("\(meal.meal_id).jpg")
+        cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage())
         cell.mealTitle.text = meal.title
         cell.mealChefName.text = meal.chefName
         cell.mealDistance.text = "\(meal.distance) mi"
