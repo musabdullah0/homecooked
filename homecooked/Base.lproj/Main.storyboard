@@ -215,7 +215,7 @@
                                                     <outlet property="mealImage" destination="l1o-Ml-CCX" id="Jjb-Rb-hSb"/>
                                                     <outlet property="mealRemaining" destination="q2z-A4-Gm3" id="u38-GU-xY4"/>
                                                     <outlet property="mealTitle" destination="nKm-Xc-AUJ" id="OtO-RX-UfW"/>
-                                                    <segue destination="WNv-tC-HUk" kind="show" id="X6C-XR-fUA"/>
+                                                    <segue destination="WNv-tC-HUk" kind="show" identifier="mealDetailsSegueIdentifier" id="X6C-XR-fUA"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -553,7 +553,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uc3-fK-N2T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757.97101449275374" y="-559.15178571428567"/>
+            <point key="canvasLocation" x="801" y="-542"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="O0w-yA-HUg">

@@ -83,7 +83,14 @@ class HomeViewController: UIViewController {
             }
         }
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mealDetailsSegueIdentifier",
+           let destination = segue.destination as? MealDetailsViewController,
+           let mealIndex = mealTableView.indexPathForSelectedRow?.row {
+            destination.displayMeal = meals[mealIndex]
+        }
+    }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -98,8 +105,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let reference = storageRef.child("\(meal.meal_id).jpg")
         cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
         cell.mealTitle.text = meal.title
-        cell.mealChefName.text = meal.chefName
-        cell.mealCost.text = "$\(meal.cost)"
+        cell.mealChefName.text = meal.chef_id
+        cell.mealCost.text = "$\(meal.price)"
         cell.mealRemaining.text = "\(meal.remaining) remaining"
         return cell
         
