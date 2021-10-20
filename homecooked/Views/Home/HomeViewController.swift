@@ -99,7 +99,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
         cell.mealTitle.text = meal.title
         cell.mealChefName.text = meal.chefName
-        cell.mealDistance.text = "\(meal.distance) mi"
         cell.mealCost.text = "$\(meal.cost)"
         cell.mealRemaining.text = "\(meal.remaining) remaining"
         return cell
