@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+import FirebaseStorage
+import FirebaseStorageUI
 
 class MealDetailsViewController: UIViewController {
+    
+    var storageRef: StorageReference!
 
     @IBOutlet weak var imageDisplay: UIImageView!
     @IBOutlet weak var mealName: UITextField!
@@ -17,14 +23,31 @@ class MealDetailsViewController: UIViewController {
     @IBOutlet weak var nutrientInfo: UILabel!
     @IBOutlet weak var dateAvailable: UILabel!
     
+    var displayMeal = Meal()
+    
 
     override func viewDidLoad() {
+        let storage = Storage.storage()
+        storageRef = storage.reference()
+        
+        let reference = storageRef.child("\(displayMeal.meal_id).jpg")
+        imageDisplay.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
+        mealName.text = displayMeal.title
+        numPortions.text = String(displayMeal.remaining)
+        portionPrice.text = String(displayMeal.price)
+        ingredients.text = displayMeal.ingredients
+        nutrientInfo.text = displayMeal.nutrientInfo
+        
+        // Create Date
+        let date = displayMeal.dateAvailable
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YY/MM/dd"
+        dateAvailable.text = dateFormatter.string(from: date)
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func order(_ sender: Any) {
+        
     }
     
     /*
