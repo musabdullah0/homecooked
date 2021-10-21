@@ -30,6 +30,7 @@ class MealDetailsViewController: UIViewController {
         let storage = Storage.storage()
         storageRef = storage.reference()
         
+        // display meal image and details
         let reference = storageRef.child("\(displayMeal.meal_id).jpg")
         imageDisplay.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
         mealName.text = displayMeal.title
@@ -46,6 +47,8 @@ class MealDetailsViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // TODO: implement a ordering feature where the user posting a meal is notified
+    // somebody is looking to purchase
     @IBAction func order(_ sender: Any) {
         
     }
