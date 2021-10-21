@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		033A91AB27209CFA00528684 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 033A91AA27209CFA00528684 /* GoogleService-Info.plist */; };
 		033A91AE2720A0BE00528684 /* PostMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033A91AD2720A0BE00528684 /* PostMealViewController.swift */; };
 		033A91B12720A63700528684 /* MealDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033A91B02720A63700528684 /* MealDetailsViewController.swift */; };
 		497A3CEFBD61A6C92232838F /* Pods_homecooked.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B2668627446F7FD3D832EA /* Pods_homecooked.framework */; };
@@ -22,10 +21,12 @@
 		D61D74612715FA4B00B38959 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74602715FA4B00B38959 /* MealTableViewCell.swift */; };
 		D61D74652715FBF400B38959 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74642715FBF400B38959 /* Meal.swift */; };
 		D61D746A2716565F00B38959 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */; };
+		D6D570C72720AA3B00495199 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6D570C62720AA3B00495199 /* GoogleService-Info.plist */; };
+		D6D570FC2720B32400495199 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D570FB2720B32400495199 /* LoginViewController.swift */; };
+		D6D571002720B32F00495199 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D570FF2720B32F00495199 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		033A91AA27209CFA00528684 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		033A91AD2720A0BE00528684 /* PostMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMealViewController.swift; sourceTree = "<group>"; };
 		033A91B02720A63700528684 /* MealDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsViewController.swift; sourceTree = "<group>"; };
 		7DBD206D39E981E6FDF06B76 /* Pods-homecooked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homecooked.release.xcconfig"; path = "Target Support Files/Pods-homecooked/Pods-homecooked.release.xcconfig"; sourceTree = "<group>"; };
@@ -43,6 +44,9 @@
 		D61D74602715FA4B00B38959 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		D61D74642715FBF400B38959 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		D6D570C62720AA3B00495199 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D6D570FB2720B32400495199 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D6D570FF2720B32F00495199 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E5FBEDA41626EC8F62F8C7FD /* Pods-homecooked.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homecooked.debug.xcconfig"; path = "Target Support Files/Pods-homecooked/Pods-homecooked.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +126,7 @@
 				D61D74492714C90B00B38959 /* Assets.xcassets */,
 				D61D744B2714C90B00B38959 /* LaunchScreen.storyboard */,
 				D61D744E2714C90B00B38959 /* Info.plist */,
-				033A91AA27209CFA00528684 /* GoogleService-Info.plist */,
+				D6D570C62720AA3B00495199 /* GoogleService-Info.plist */,
 			);
 			path = homecooked;
 			sourceTree = "<group>";
@@ -130,6 +134,7 @@
 		D61D74552714EA2C00B38959 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D6D570FA2720B2F200495199 /* Auth */,
 				033A91AF2720A61700528684 /* Meal Details */,
 				033A91AC2720A0AB00528684 /* Post Meal */,
 				D61D74672715FD6B00B38959 /* Settings */,
@@ -169,6 +174,15 @@
 				D61D745C2714F28C00B38959 /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		D6D570FA2720B2F200495199 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D6D570FB2720B32400495199 /* LoginViewController.swift */,
+				D6D570FF2720B32F00495199 /* SignUpViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,7 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61D744D2714C90B00B38959 /* LaunchScreen.storyboard in Resources */,
-				033A91AB27209CFA00528684 /* GoogleService-Info.plist in Resources */,
+				D6D570C72720AA3B00495199 /* GoogleService-Info.plist in Resources */,
 				D61D744A2714C90B00B38959 /* Assets.xcassets in Resources */,
 				D61D74482714C90100B38959 /* Main.storyboard in Resources */,
 			);
@@ -292,10 +306,12 @@
 				D61D74652715FBF400B38959 /* Meal.swift in Sources */,
 				D61D74612715FA4B00B38959 /* MealTableViewCell.swift in Sources */,
 				033A91AE2720A0BE00528684 /* PostMealViewController.swift in Sources */,
+				D6D571002720B32F00495199 /* SignUpViewController.swift in Sources */,
 				D61D74432714C90100B38959 /* SceneDelegate.swift in Sources */,
 				D61D745D2714F28C00B38959 /* SettingsViewController.swift in Sources */,
 				033A91B12720A63700528684 /* MealDetailsViewController.swift in Sources */,
 				D61D74592714EC0000B38959 /* HomeViewController.swift in Sources */,
+				D6D570FC2720B32400495199 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

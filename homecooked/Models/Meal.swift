@@ -11,35 +11,51 @@ import FirebaseFirestore
 
 class Meal {
     var meal_id: String
-    var image: String
-    var title: String
-    var chefName: String // need to change to a relationship with a User object
-    var distance: Int
-    var cost: Double
+    var chef_id: String
+    var dateAvailable: Date
+    var ingredients: String
+    var nutrientInfo: String
+    var price: Double
     var remaining: Int
+    var title: String
+    
+    init() {
+        self.meal_id = String()
+        self.chef_id = String()
+        self.dateAvailable = Date()
+        self.ingredients = String()
+        self.nutrientInfo = String ()
+        self.price = Double()
+        self.remaining = Int()
+        self.title = String()
+    }
     
     init(withDoc: QueryDocumentSnapshot) {
         self.meal_id = withDoc.documentID
+        self.chef_id = withDoc.get("chefID") as? String ?? "no chef"
+        self.dateAvailable = withDoc.get("dateAvailable") as? Date ?? Date.distantPast
+        self.ingredients = withDoc.get("ingredients") as? String ?? "none"
+        self.nutrientInfo = withDoc.get("nutrientInfo") as? String ?? "none"
+        self.price = withDoc.get("cost") as? Double ?? -9999.0
+        self.remaining = withDoc.get("remaining") as? Int ?? -9999
         self.title = withDoc.get("title") as? String ?? "no title"
-        self.chefName = withDoc.get("chefName") as? String ?? "no chef"
-        self.distance = withDoc.get("distance") as? Int ?? 0
-        self.cost = withDoc.get("cost") as? Double ?? 1.0
-        self.remaining = withDoc.get("remaining") as? Int ?? 0
-        self.image = "gs://homecooked-ios.appspot.com/\(withDoc.documentID).jpg"
     }
     
     func updateProperties(withDoc: QueryDocumentSnapshot) {
+        self.meal_id = withDoc.documentID
+        self.chef_id = withDoc.get("chefID") as? String ?? "no chef"
+        self.dateAvailable = withDoc.get("dateAvailable") as? Date ?? Date.distantPast
+        self.ingredients = withDoc.get("ingredients") as? String ?? "none"
+        self.nutrientInfo = withDoc.get("nutrientInfo") as? String ?? "none"
+        self.price = withDoc.get("cost") as? Double ?? -9999.0
+        self.remaining = withDoc.get("remaining") as? Int ?? -9999
         self.title = withDoc.get("title") as? String ?? "no title"
-        self.chefName = withDoc.get("chefName") as? String ?? "no chef"
-        self.distance = withDoc.get("distance") as? Int ?? 0
-        self.cost = withDoc.get("cost") as? Double ?? 1.0
-        self.remaining = withDoc.get("remaining") as? Int ?? 0
         // if they change the image, the url should stay the same (caching problems maybe?)
     }
 }
 
 extension Meal: CustomStringConvertible {
     var description: String {
-        return "\(title), \(chefName), d-\(distance), c-\(cost), r-\(remaining)"
+        return "\(self.title), \(self.chef_id), \(self.meal_id)"
     }
 }
