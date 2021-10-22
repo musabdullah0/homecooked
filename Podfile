@@ -11,5 +11,6 @@ target 'homecooked' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'FirebaseUI/Storage'
+  pod 'Firebase/Auth'
 
 end

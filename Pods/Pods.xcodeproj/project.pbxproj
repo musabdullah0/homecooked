@@ -11115,7 +11115,11 @@
 		C1482CB46B606BB09B6F1D60D2317B28 /* udp_server.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = udp_server.h; path = src/core/lib/iomgr/udp_server.h; sourceTree = "<group>"; };
 		C1587C49FD4E065B5198960621114A04 /* s3_pkt.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = s3_pkt.cc; path = src/ssl/s3_pkt.cc; sourceTree = "<group>"; };
 		C18C8541ADAFBBC499A288CE3CF98EBF /* GDTCORLifecycle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GDTCORLifecycle.h; path = GoogleDataTransport/GDTCORLibrary/Internal/GDTCORLifecycle.h; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GTMSessionFetcher; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> e801b18b74304548422af6f48297e33db9327df7
 		C19AD96A0998D811ADEFCE61E408C305 /* FIRDocumentSnapshot.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = FIRDocumentSnapshot.mm; path = Firestore/Source/API/FIRDocumentSnapshot.mm; sourceTree = "<group>"; };
 		C1CD3AB706E769838F8D4BA3B185B34E /* tls13_both.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = tls13_both.cc; path = src/ssl/tls13_both.cc; sourceTree = "<group>"; };
 		C1D914B0535BF0A99CE79CE608DFCD1F /* tls_msvc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tls_msvc.h; path = src/core/lib/gpr/tls_msvc.h; sourceTree = "<group>"; };
@@ -11260,7 +11264,11 @@
 		CC50C76B4D0A28932386641EB63FBA3E /* tls.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tls.h; path = src/core/lib/gpr/tls.h; sourceTree = "<group>"; };
 		CC7F6DEAAE69F8DF14F3F36EB1C804AD /* slice_intern.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = slice_intern.cc; path = src/core/lib/slice/slice_intern.cc; sourceTree = "<group>"; };
 		CC8E48F9B43CA2F810F0A0A8E67B29FB /* channel.cc */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = channel.cc; path = src/core/lib/surface/channel.cc; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		CC9509470CE18E83E55238EAA95D23A1 /* Pods-homecooked */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-homecooked"; path = Pods_homecooked.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+=======
+		CC9509470CE18E83E55238EAA95D23A1 /* Pods_homecooked.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_homecooked.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+>>>>>>> e801b18b74304548422af6f48297e33db9327df7
 		CCB0ACA92DACE280E8274DC99605B9F5 /* deterministic.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = deterministic.c; path = src/crypto/rand_extra/deterministic.c; sourceTree = "<group>"; };
 		CCB4EBBC8BE2536234CDF4CDA4DB71B1 /* FBLPromise+Catch.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "FBLPromise+Catch.h"; path = "Sources/FBLPromises/include/FBLPromise+Catch.h"; sourceTree = "<group>"; };
 		CCE896D31BCE7F804D6484207AFA88F5 /* FIRStorageDownloadTask_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRStorageDownloadTask_Private.h; path = FirebaseStorage/Sources/FIRStorageDownloadTask_Private.h; sourceTree = "<group>"; };
@@ -15541,7 +15549,7 @@
 				C1998E0D8085221AD87F89B614C10E52 /* GTMSessionFetcher.framework */,
 				0A9F46A999C47653013D3AD854352507 /* leveldb-library */,
 				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb */,
-				CC9509470CE18E83E55238EAA95D23A1 /* Pods-homecooked */,
+				CC9509470CE18E83E55238EAA95D23A1 /* Pods_homecooked.framework */,
 				3347A1AB6546F0A3977529B8F199DC41 /* PromisesObjC */,
 				B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */,
 			);
@@ -18672,7 +18680,7 @@
 			);
 			name = "Pods-homecooked";
 			productName = Pods_homecooked;
-			productReference = CC9509470CE18E83E55238EAA95D23A1 /* Pods-homecooked */;
+			productReference = CC9509470CE18E83E55238EAA95D23A1 /* Pods_homecooked.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		87803597EB3F20FC46472B85392EC4FD /* FirebaseInstallations */ = {
