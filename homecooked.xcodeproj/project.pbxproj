@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		033A91AB27209CFA00528684 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 033A91AA27209CFA00528684 /* GoogleService-Info.plist */; };
 		033A91AE2720A0BE00528684 /* PostMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033A91AD2720A0BE00528684 /* PostMealViewController.swift */; };
 		033A91B12720A63700528684 /* MealDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033A91B02720A63700528684 /* MealDetailsViewController.swift */; };
 		497A3CEFBD61A6C92232838F /* Pods_homecooked.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B2668627446F7FD3D832EA /* Pods_homecooked.framework */; };
@@ -22,10 +21,10 @@
 		D61D74612715FA4B00B38959 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74602715FA4B00B38959 /* MealTableViewCell.swift */; };
 		D61D74652715FBF400B38959 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74642715FBF400B38959 /* Meal.swift */; };
 		D61D746A2716565F00B38959 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */; };
+		DCDC8F0C2720B74F006B9C4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCDC8F0B2720B74F006B9C4B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		033A91AA27209CFA00528684 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		033A91AD2720A0BE00528684 /* PostMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMealViewController.swift; sourceTree = "<group>"; };
 		033A91B02720A63700528684 /* MealDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsViewController.swift; sourceTree = "<group>"; };
 		7DBD206D39E981E6FDF06B76 /* Pods-homecooked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homecooked.release.xcconfig"; path = "Target Support Files/Pods-homecooked/Pods-homecooked.release.xcconfig"; sourceTree = "<group>"; };
@@ -43,6 +42,7 @@
 		D61D74602715FA4B00B38959 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		D61D74642715FBF400B38959 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		DCDC8F0B2720B74F006B9C4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5FBEDA41626EC8F62F8C7FD /* Pods-homecooked.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homecooked.debug.xcconfig"; path = "Target Support Files/Pods-homecooked/Pods-homecooked.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +122,7 @@
 				D61D74492714C90B00B38959 /* Assets.xcassets */,
 				D61D744B2714C90B00B38959 /* LaunchScreen.storyboard */,
 				D61D744E2714C90B00B38959 /* Info.plist */,
-				033A91AA27209CFA00528684 /* GoogleService-Info.plist */,
+				DCDC8F0B2720B74F006B9C4B /* GoogleService-Info.plist */,
 			);
 			path = homecooked;
 			sourceTree = "<group>";
@@ -231,7 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61D744D2714C90B00B38959 /* LaunchScreen.storyboard in Resources */,
-				033A91AB27209CFA00528684 /* GoogleService-Info.plist in Resources */,
+				DCDC8F0C2720B74F006B9C4B /* GoogleService-Info.plist in Resources */,
 				D61D744A2714C90B00B38959 /* Assets.xcassets in Resources */,
 				D61D74482714C90100B38959 /* Main.storyboard in Resources */,
 			);
