@@ -10,6 +10,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseStorage
 import FirebaseStorageUI
+import FirebaseAuth
 
 class PostMealViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -18,8 +19,8 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var numPortions: UITextField!
     @IBOutlet weak var portionPrice: UITextField!
     @IBOutlet weak var ingredients: UITextField!
-    @IBOutlet weak var nutrientInfo: UITextField!
-    @IBOutlet weak var dateSelect: UIDatePicker!
+    @IBOutlet weak var availableFrom: UIDatePicker!
+    @IBOutlet weak var availableUntil: UIDatePicker!
     
     let imagePicker = UIImagePickerController()
     
@@ -66,15 +67,27 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
+    func parseIngredients(ingredients: String) -> [String] {
+        return ingredients.split{$0 == " " || $0 == ","}.map(String.init)
+    }
+    
     @IBAction func postMeal(_ sender: Any) {
+        
         // Add meal data to firestore
         let uuid = UUID().uuidString
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yy"
+        let availableFromString = dateFormatter.string(from: availableFrom.date)
+        let availableUntilString = dateFormatter.string(from: availableUntil.date)
+        
         Firestore.firestore().collection("meals").document(uuid).setData([
-            "mealName": mealName.text!,
-            "numPortions": numPortions.text!,
-            "portionPrice": portionPrice.text!,
-            "ingredients": ingredients.text!,
-            "nutrientInfo": nutrientInfo.text!,
+            "title": mealName?.text ?? "",
+            "portions": Int(numPortions?.text ?? "0"),
+            "price": Float(portionPrice.text ?? "0.0") ?? 0.0,
+            "ingredients": parseIngredients(ingredients: ingredients.text ?? ""),
+            "available_from": availableFromString,
+            "available_until": availableUntilString,
+            "chef_id": Auth.auth().currentUser?.uid ?? "unknown_chef_id"
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")

@@ -12,50 +12,57 @@ import FirebaseFirestore
 class Meal {
     var meal_id: String
     var chef_id: String
-    var dateAvailable: Date
-    var ingredients: String
-    var nutrientInfo: String
-    var price: Double
-    var remaining: Int
+    var available_from: Date
+    var available_until: Date
+    var ingredients: [String]
+    var price: Float
+    var portions: Int
     var title: String
     
     init() {
         self.meal_id = String()
         self.chef_id = String()
-        self.dateAvailable = Date()
-        self.ingredients = String()
-        self.nutrientInfo = String ()
-        self.price = Double()
-        self.remaining = Int()
+        self.available_from = Date()
+        self.available_until = Date()
+        self.ingredients = [""]
+        self.price = Float()
+        self.portions = Int()
         self.title = String()
     }
     
     init(withDoc: QueryDocumentSnapshot) {
         self.meal_id = withDoc.documentID
-        self.chef_id = withDoc.get("chefID") as? String ?? "no chef"
-        self.dateAvailable = withDoc.get("dateAvailable") as? Date ?? Date.distantPast
-        self.ingredients = withDoc.get("ingredients") as? String ?? "none"
-        self.nutrientInfo = withDoc.get("nutrientInfo") as? String ?? "none"
-        self.price = withDoc.get("cost") as? Double ?? -9999.0
-        self.remaining = withDoc.get("remaining") as? Int ?? -9999
+        self.chef_id = withDoc.get("chef_id") as? String ?? "no chef"
+        self.available_from = withDoc.get("available_from") as? Date ?? Date.distantPast
+        self.available_until = withDoc.get("available_until") as? Date ?? Date.distantPast
+        self.ingredients = withDoc.get("ingredients") as? [String] ?? ["n/a"]
+        self.price = withDoc.get("price") as? Float ?? 0.0
+        self.portions = withDoc.get("portions") as? Int ?? 0
         self.title = withDoc.get("title") as? String ?? "no title"
     }
     
     func updateProperties(withDoc: QueryDocumentSnapshot) {
         self.meal_id = withDoc.documentID
-        self.chef_id = withDoc.get("chefID") as? String ?? "no chef"
-        self.dateAvailable = withDoc.get("dateAvailable") as? Date ?? Date.distantPast
-        self.ingredients = withDoc.get("ingredients") as? String ?? "none"
-        self.nutrientInfo = withDoc.get("nutrientInfo") as? String ?? "none"
-        self.price = withDoc.get("cost") as? Double ?? -9999.0
-        self.remaining = withDoc.get("remaining") as? Int ?? -9999
+        self.chef_id = withDoc.get("chef_id") as? String ?? "no chef"
+        self.available_from = withDoc.get("available_from") as? Date ?? Date.distantPast
+        self.available_until = withDoc.get("available_until") as? Date ?? Date.distantPast
+        self.ingredients = withDoc.get("ingredients") as? [String] ?? ["n/a"]
+        self.price = withDoc.get("price") as? Float ?? 0.0
+        self.portions = withDoc.get("portions") as? Int ?? 0
         self.title = withDoc.get("title") as? String ?? "no title"
-        // if they change the image, the url should stay the same (caching problems maybe?)
     }
 }
 
 extension Meal: CustomStringConvertible {
     var description: String {
-        return "\(self.title), \(self.chef_id), \(self.meal_id)"
+        return """
+            \(self.meal_id)
+            title: \(self.title)
+            price: \(self.price)
+            portions: \(self.portions)
+            ingredients: \(self.ingredients)
+            available_from: \(self.available_from)
+            available_until: \(self.available_until)
+        """
     }
 }

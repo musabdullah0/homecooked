@@ -100,14 +100,27 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let meal = meals[indexPath.row]
+        print(meal)
         let cell = mealTableView.dequeueReusableCell(withIdentifier: "MealCellIdentifier") as! MealTableViewCell
         
         let reference = storageRef.child("\(meal.meal_id).jpg")
         cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
         cell.mealTitle.text = meal.title
-        cell.mealChefName.text = meal.chef_id
         cell.mealCost.text = "$\(meal.price)"
-        cell.mealRemaining.text = "\(meal.remaining) remaining"
+        cell.mealRemaining.text = "\(meal.portions) remaining"
+        
+        let userDocRef = Firestore.firestore().collection("users").document(meal.chef_id)
+        
+        userDocRef.getDocument { (doc, err) in
+            if let doc = doc, doc.exists {
+                let name = doc.data()?["name"] as? String
+                cell.mealChefName.text = name
+            } else {
+                print("Document does not exist")
+                cell.mealChefName.text = "no name"
+            }
+        }
+        
         return cell
         
     }

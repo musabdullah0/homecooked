@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class SignUpViewController: UIViewController {
 
@@ -16,16 +17,9 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
 
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func clickedLogin(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(identifier: "login") as! LoginViewController
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
-    }
-    
     @IBAction func clickedSignup(_ sender: Any) {
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
@@ -34,22 +28,26 @@ class SignUpViewController: UIViewController {
                     print("sign up error: \(error.localizedDescription)")
                 } else {
                     print("sign up success: \(String(describing: authResult))")
+                    
+                    Firestore.firestore().collection("users").document(authResult?.user.uid ?? "fakeuid").setData([
+                        "name": self?.nameTextField?.text ?? "no name",
+                        "email": email,
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing user: \(err)")
+                        } else {
+                            print("user doc succesfully written!")
+                        }
+
+                    }
+                    
                     let vc = strongSelf.storyboard?.instantiateViewController(withIdentifier: "tabbar") as! UIViewController
                     vc.modalPresentationStyle = .fullScreen
                     strongSelf.present(vc, animated: true)
+
                 }
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
