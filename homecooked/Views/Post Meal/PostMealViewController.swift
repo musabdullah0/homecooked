@@ -21,6 +21,7 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var ingredients: UITextField!
     @IBOutlet weak var availableFrom: UIDatePicker!
     @IBOutlet weak var availableUntil: UIDatePicker!
+    @IBOutlet weak var choosePhotoButton: UIButton!
     
     let imagePicker = UIImagePickerController()
     
