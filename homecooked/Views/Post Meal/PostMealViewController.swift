@@ -113,11 +113,13 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
             let price = portionPrice.text, !price.isEmpty,
             let ingredientsString = ingredients.text, !ingredientsString.isEmpty
         else {
-            let alert = UIAlertController(title: "post meal alert", message: "please fill out all the fields", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Missing Input", message: "Please fill out all the fields", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
             self.present(alert, animated: true, completion: nil)
             return
         }
+        
+        validateInput(portions: portions, price: price, start: self.availableFrom.date, end: self.availableUntil.date)
         
         let uuid = UUID().uuidString
         let geocoder = CLGeocoder()
@@ -140,5 +142,38 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func cancelClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func validateInput(portions: String, price: String, start: Date, end: Date) {
+        var error = false
+        var errorStr = ""
+        let currentDateTime = Date()
+        if (Int(portions)! <= 0){
+            error = true
+            errorStr += "Number of portions must be greater than 0\n"
+        }
+        if (Int(price)! <= 0){
+            error = true
+            errorStr += "Price must be greater than 0\n"
+        }
+        if (start < currentDateTime){
+            error = true
+            errorStr += "Availablility must start after the current time\n"
+        }
+        if (end < currentDateTime){
+            error = true
+            errorStr += "Availablility must end after the current time\n"
+        }
+        if (end <= start){
+            error = true
+            errorStr += "End time must be after start time\n"
+        }
+        if (error) {
+            errorStr += "Please fix errors before posting meal"
+            let alert = UIAlertController(title: "Invalid Input", message: errorStr, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
     }
 }
