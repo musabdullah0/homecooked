@@ -16,16 +16,21 @@ class HomeViewController: UIViewController {
     var mealsRef: CollectionReference!
     var storageRef: StorageReference!
 
-    @IBOutlet weak var categoryCollectionView: UICollectionView!
+//    @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var mealTableView: UITableView!
     @IBOutlet weak var postMealBtn: UIButton!
     var meals: [Meal] = []
-    var categories: [String] = ["All", "Nearby", "Cheap", "Healthy", "Asian", "Desi", "American", "Thai"]
+//    var categories: [String] = ["All", "Nearby", "Cheap", "Healthy", "Asian", "Desi", "American", "Thai"]
+    @IBOutlet weak var titleView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         postMealBtn.layer.cornerRadius = 10
         postMealBtn.clipsToBounds = true
+        titleView.layer.cornerRadius = 10
+        titleView.layer.masksToBounds = true
+        
         mealTableView.delegate = self
         mealTableView.dataSource = self
         mealsRef = Firestore.firestore().collection("meals")
@@ -125,16 +130,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "category", for: indexPath) as! CategoryCollectionViewCell
-        cell.categoryButton.setTitle(categories[indexPath.row], for: .normal)
-        return cell
-    }
-    
-    
-}
+//extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return categories.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "category", for: indexPath) as! CategoryCollectionViewCell
+//        cell.categoryButton.setTitle(categories[indexPath.row], for: .normal)
+//        return cell
+//    }
+//
+//
+//}
