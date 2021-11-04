@@ -46,7 +46,8 @@ class MealDetailsViewController: UIViewController {
         portionPrice.text = String(displayMeal.price)
         ingredients.text = displayMeal.ingredients.joined(separator: ",")
 
-        availableFrom.date = displayMeal.available_from
+       
+        availableFrom.date =  displayMeal.available_from
         availableUntil.date = displayMeal.available_until
         
         let clocation = CLLocation(latitude: displayMeal.location.latitude, longitude: displayMeal.location.longitude)

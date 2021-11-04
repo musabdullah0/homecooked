@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import FirebaseFirestore
+import Firebase
 
 let defaultLocation = FirebaseFirestore.GeoPoint(latitude: 30.28318678170686, longitude: -97.74439234690759)
 
@@ -37,8 +38,13 @@ class Meal {
     init(withDoc: QueryDocumentSnapshot) {
         self.meal_id = withDoc.documentID
         self.chef_id = withDoc.get("chef_id") as? String ?? "no chef"
-        self.available_from = withDoc.get("available_from") as? Date ?? Date.distantPast
-        self.available_until = withDoc.get("available_until") as? Date ?? Date.distantPast
+        
+        let from = withDoc.get("available_from") as? Firebase.Timestamp ?? Firebase.Timestamp()
+        let until = withDoc.get("available_until") as? Firebase.Timestamp ?? Firebase.Timestamp()
+        
+        self.available_from = from.dateValue()
+        self.available_until = until.dateValue()
+        
         self.ingredients = withDoc.get("ingredients") as? [String] ?? ["n/a"]
         self.price = withDoc.get("price") as? Float ?? 0.0
         self.portions = withDoc.get("portions") as? Int ?? 0
@@ -49,8 +55,13 @@ class Meal {
     func updateProperties(withDoc: QueryDocumentSnapshot) {
         self.meal_id = withDoc.documentID
         self.chef_id = withDoc.get("chef_id") as? String ?? "no chef"
-        self.available_from = withDoc.get("available_from") as? Date ?? Date.distantPast
-        self.available_until = withDoc.get("available_until") as? Date ?? Date.distantPast
+        
+        let from = withDoc.get("available_from") as? Firebase.Timestamp ?? Firebase.Timestamp()
+        let until = withDoc.get("available_until") as? Firebase.Timestamp ?? Firebase.Timestamp()
+        
+        self.available_from = from.dateValue()
+        self.available_until = until.dateValue()
+        
         self.ingredients = withDoc.get("ingredients") as? [String] ?? ["n/a"]
         self.price = withDoc.get("price") as? Float ?? 0.0
         self.portions = withDoc.get("portions") as? Int ?? 0

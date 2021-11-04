@@ -76,7 +76,7 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
         return ingredients.split{$0 == " " || $0 == ","}.map(String.init)
     }
     
-    func postMealToFirebase(title: String, portions: Int, price: Float, ingredients: [String], from: String, until: String, lat: Double, long: Double, uuid: String) {
+    func postMealToFirebase(title: String, portions: Int, price: Float, ingredients: [String], from: Date, until: Date, lat: Double, long: Double, uuid: String) {
         
         Firestore.firestore().collection("meals").document(uuid).setData([
             "title": title,
@@ -119,7 +119,9 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
             return
         }
         
-        validateInput(portions: portions, price: price, start: self.availableFrom.date, end: self.availableUntil.date)
+        let valid = validateInput(portions: portions, price: price, start: self.availableFrom.date, end: self.availableUntil.date)
+        
+        if (!valid) {return}
         
         let uuid = UUID().uuidString
         let geocoder = CLGeocoder()
@@ -129,12 +131,14 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
             let lat = placemark?.location?.coordinate.latitude
             let long = placemark?.location?.coordinate.longitude
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yy"
-            let availableFromString = dateFormatter.string(from: self.availableFrom.date)
-            let availableUntilString = dateFormatter.string(from: self.availableUntil.date)
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "dd/MM/yy"
+//            let availableFromString = dateFormatter.string(from: self.availableFrom.date)
+//            let availableUntilString = dateFormatter.string(from: self.availableUntil.date)
+            print(self.availableFrom.date)
+            print(self.availableUntil.date)
             
-            self.postMealToFirebase(title: title, portions: Int(portions) ?? 0, price: Float(price) ?? 0.0, ingredients: self.parseIngredients(ingredientsString), from: availableFromString, until: availableUntilString, lat: lat ?? 0.0, long: long ?? 0.0, uuid: uuid)
+            self.postMealToFirebase(title: title, portions: Int(portions) ?? 0, price: Float(price) ?? 0.0, ingredients: self.parseIngredients(ingredientsString), from: self.availableFrom.date, until: self.availableUntil.date, lat: lat ?? 0.0, long: long ?? 0.0, uuid: uuid)
         }
 
         self.dismiss(animated: true, completion: nil)
@@ -144,36 +148,32 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
-    func validateInput(portions: String, price: String, start: Date, end: Date) {
-        var error = false
-        var errorStr = ""
+    func showAlert(_ message: String) {
+        let alert = UIAlertController(title: "save profile alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func validateInput(portions: String, price: String, start: Date, end: Date) -> Bool {
         let currentDateTime = Date()
-        if (Int(portions)! <= 0){
-            error = true
-            errorStr += "Number of portions must be greater than 0\n"
+        
+        guard let portions = Int(portions), portions > 0 else {
+            showAlert("Number of portions must be greater than 0")
+            return false
         }
-        if (Int(price)! <= 0){
-            error = true
-            errorStr += "Price must be greater than 0\n"
+        guard let price = Float(price), price > 0 else {
+            showAlert("Price must be greater than 0")
+            return false
         }
-        if (start < currentDateTime){
-            error = true
-            errorStr += "Availablility must start after the current time\n"
+        
+        if (start < currentDateTime - (5 * 60)){
+            showAlert("Availablility must start after the current time")
+            return false
         }
-        if (end < currentDateTime){
-            error = true
-            errorStr += "Availablility must end after the current time\n"
+        if (end < start){
+            showAlert("Availablility must end after the start time")
+            return false
         }
-        if (end <= start){
-            error = true
-            errorStr += "End time must be after start time\n"
-        }
-        if (error) {
-            errorStr += "Please fix errors before posting meal"
-            let alert = UIAlertController(title: "Invalid Input", message: errorStr, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default))
-            self.present(alert, animated: true, completion: nil)
-            return
-        }
+        return true
     }
 }
