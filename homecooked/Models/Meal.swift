@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import FirebaseFirestore
 
+let defaultLocation = FirebaseFirestore.GeoPoint(latitude: 30.28318678170686, longitude: -97.74439234690759)
+
 class Meal {
     var meal_id: String
     var chef_id: String
@@ -18,6 +20,7 @@ class Meal {
     var price: Float
     var portions: Int
     var title: String
+    var location: FirebaseFirestore.GeoPoint
     
     init() {
         self.meal_id = String()
@@ -28,6 +31,7 @@ class Meal {
         self.price = Float()
         self.portions = Int()
         self.title = String()
+        self.location = defaultLocation
     }
     
     init(withDoc: QueryDocumentSnapshot) {
@@ -39,6 +43,7 @@ class Meal {
         self.price = withDoc.get("price") as? Float ?? 0.0
         self.portions = withDoc.get("portions") as? Int ?? 0
         self.title = withDoc.get("title") as? String ?? "no title"
+        self.location = withDoc.get("location") as? FirebaseFirestore.GeoPoint ?? defaultLocation
     }
     
     func updateProperties(withDoc: QueryDocumentSnapshot) {
@@ -50,6 +55,7 @@ class Meal {
         self.price = withDoc.get("price") as? Float ?? 0.0
         self.portions = withDoc.get("portions") as? Int ?? 0
         self.title = withDoc.get("title") as? String ?? "no title"
+        self.location = withDoc.get("location") as? FirebaseFirestore.GeoPoint ?? defaultLocation
     }
 }
 
@@ -63,6 +69,7 @@ extension Meal: CustomStringConvertible {
             ingredients: \(self.ingredients)
             available_from: \(self.available_from)
             available_until: \(self.available_until)
+            location: \(self.location)
         """
     }
 }

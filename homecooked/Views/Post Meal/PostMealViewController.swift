@@ -11,6 +11,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseStorageUI
 import FirebaseAuth
+import CoreLocation
 
 class PostMealViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -19,14 +20,17 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var numPortions: UITextField!
     @IBOutlet weak var portionPrice: UITextField!
     @IBOutlet weak var ingredients: UITextField!
+    @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var availableFrom: UIDatePicker!
     @IBOutlet weak var availableUntil: UIDatePicker!
     @IBOutlet weak var choosePhotoButton: UIButton!
+    @IBOutlet weak var postMealButton: UIButton!
     
     let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        postMealButton.layer.cornerRadius = 10
     }
     
     @IBAction func imageSelect(_ sender: Any) {
@@ -68,44 +72,73 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
-    func parseIngredients(ingredients: String) -> [String] {
+    func parseIngredients(_ ingredients: String) -> [String] {
         return ingredients.split{$0 == " " || $0 == ","}.map(String.init)
     }
     
-    @IBAction func postMeal(_ sender: Any) {
-        
-        // Add meal data to firestore
-        let uuid = UUID().uuidString
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yy"
-        let availableFromString = dateFormatter.string(from: availableFrom.date)
-        let availableUntilString = dateFormatter.string(from: availableUntil.date)
+    func postMealToFirebase(title: String, portions: Int, price: Float, ingredients: [String], from: String, until: String, lat: Double, long: Double, uuid: String) {
         
         Firestore.firestore().collection("meals").document(uuid).setData([
-            "title": mealName?.text ?? "",
-            "portions": Int(numPortions?.text ?? "0"),
-            "price": Float(portionPrice.text ?? "0.0") ?? 0.0,
-            "ingredients": parseIngredients(ingredients: ingredients.text ?? ""),
-            "available_from": availableFromString,
-            "available_until": availableUntilString,
-            "chef_id": Auth.auth().currentUser?.uid ?? "unknown_chef_id"
+            "title": title,
+            "portions": portions,
+            "price": price,
+            "ingredients": ingredients,
+            "available_from": from,
+            "available_until": until,
+            "chef_id": Auth.auth().currentUser?.uid ?? "unknown_chef_id",
+            "location": FirebaseFirestore.GeoPoint(latitude: lat, longitude: long)
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
                 print("Document succesfully written!")
+                // Upload image to firebase storage
+                let image = self.imageDisplay.image
+                guard let imageData = image?.jpegData(compressionQuality: 1.0) else { return }
+                let storage = Storage.storage()
+                let storageRef = storage.reference()
+                let imageName = "\(uuid).jpg"
+                storageRef.child(imageName).putData(imageData)
             }
-            
+
+        }
+    }
+    
+    @IBAction func postMeal(_ sender: Any) {
+        // get location
+        guard
+            let address = locationField.text, !address.isEmpty,
+            let title = mealName.text, !title.isEmpty,
+            let portions = numPortions.text, !portions.isEmpty,
+            let price = portionPrice.text, !price.isEmpty,
+            let ingredientsString = ingredients.text, !ingredientsString.isEmpty
+        else {
+            let alert = UIAlertController(title: "post meal alert", message: "please fill out all the fields", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true, completion: nil)
+            return
         }
         
-        // Upload image to firebase storage
-        let image = imageDisplay.image
-        guard let imageData = image?.jpegData(compressionQuality: 1.0) else { return  }
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let imageName = "\(uuid).jpg"
-        storageRef.child(imageName).putData(imageData)
-        
-        self.dismiss(animated: false, completion: nil)
+        let uuid = UUID().uuidString
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) {
+            placemarks, error in
+            let placemark = placemarks?.first
+            let lat = placemark?.location?.coordinate.latitude
+            let long = placemark?.location?.coordinate.longitude
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yy"
+            let availableFromString = dateFormatter.string(from: self.availableFrom.date)
+            let availableUntilString = dateFormatter.string(from: self.availableUntil.date)
+            
+            self.postMealToFirebase(title: title, portions: Int(portions) ?? 0, price: Float(price) ?? 0.0, ingredients: self.parseIngredients(ingredientsString), from: availableFromString, until: availableUntilString, lat: lat ?? 0.0, long: long ?? 0.0, uuid: uuid)
+        }
+
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

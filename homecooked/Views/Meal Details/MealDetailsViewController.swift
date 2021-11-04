@@ -10,6 +10,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseStorage
 import FirebaseStorageUI
+import CoreLocation
 
 class MealDetailsViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class MealDetailsViewController: UIViewController {
     @IBOutlet weak var numPortions: UILabel!
     @IBOutlet weak var portionPrice: UILabel!
     @IBOutlet weak var ingredients: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var availableFrom: UIDatePicker!
     @IBOutlet weak var availableUntil: UIDatePicker!
     
@@ -31,16 +33,40 @@ class MealDetailsViewController: UIViewController {
         let storage = Storage.storage()
         storageRef = storage.reference()
 
-        // display meal image and details
         let reference = storageRef.child("\(displayMeal.meal_id).jpg")
         imageDisplay.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
+        
+        imageDisplay.layer.cornerRadius = imageDisplay.frame.height / 2
+        imageDisplay.layer.masksToBounds = false
+        imageDisplay.clipsToBounds = true
+        imageDisplay.contentMode = .scaleAspectFill
+        
         mealName.text = displayMeal.title
         numPortions.text = String(displayMeal.portions)
         portionPrice.text = String(displayMeal.price)
-        ingredients.text = displayMeal.ingredients[0]
+        ingredients.text = displayMeal.ingredients.joined(separator: ",")
 
         availableFrom.date = displayMeal.available_from
         availableUntil.date = displayMeal.available_until
+        
+        let clocation = CLLocation(latitude: displayMeal.location.latitude, longitude: displayMeal.location.longitude)
+        
+        CLGeocoder().reverseGeocodeLocation(clocation, completionHandler: {(placemarks, error) -> Void in
+            if let error = error {
+                print("\(error.localizedDescription)")
+                self.locationLabel.text = "no location found"
+                return
+            }
+            
+            guard let spots = placemarks, spots.count > 0 else {
+                self.locationLabel.text = "no location found"
+                return
+            }
+            let pm = spots[0]
+            let address = "\(pm.name ?? "street") \(pm.locality ?? "city") \(pm.administrativeArea ?? "state") \(pm.postalCode ?? "zipcode")"
+            self.locationLabel.text = address
+
+        })
     }
     
     // TODO: implement a ordering feature where the user posting a meal is notified

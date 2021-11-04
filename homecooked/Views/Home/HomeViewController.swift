@@ -100,7 +100,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let meal = meals[indexPath.row]
-        print(meal)
         let cell = mealTableView.dequeueReusableCell(withIdentifier: "MealCellIdentifier") as! MealTableViewCell
         
         let reference = storageRef.child("\(meal.meal_id).jpg")
