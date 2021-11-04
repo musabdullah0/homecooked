@@ -338,7 +338,7 @@
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelClicked:" destination="5lc-WM-Evf" eventType="touchUpInside" id="7R5-sa-NxP"/>
+                                            <action selector="cancel:" destination="6NH-Ur-2Hb" eventType="touchUpInside" id="77t-nJ-x42"/>
                                         </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7QU-1b-aiH">
