@@ -10,6 +10,7 @@ import Firebase
 import FirebaseFirestore
 import FirebaseStorage
 import FirebaseStorageUI
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
     
@@ -51,7 +52,9 @@ class HomeViewController: UIViewController {
         snapshot.documentChanges.forEach { diff in
             if diff.type == .added {
                 let mealToAdd = Meal(withDoc: diff.document)
-                self.meals.append(mealToAdd)
+                if mealToAdd.chef_id != Auth.auth().currentUser?.uid {
+                    self.meals.append(mealToAdd)
+                }
             }
             if (diff.type == .modified) {
                 let docId = diff.document.documentID

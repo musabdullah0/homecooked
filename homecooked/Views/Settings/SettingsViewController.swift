@@ -121,4 +121,18 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func logoutClicked(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVC = storyboard.instantiateViewController(withIdentifier: "loginVC") as! LoginViewController
+            loginVC.modalPresentationStyle = .fullScreen
+            self.present(loginVC, animated: true, completion: nil)
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+
+    }
+    
 }
