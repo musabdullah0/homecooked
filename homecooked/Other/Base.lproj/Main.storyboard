@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings-->
+        <!--Profile-->
         <scene sceneID="uSn-nB-8zv">
             <objects>
                 <viewController id="dHF-rk-VqX" customClass="SettingsViewController" customModule="homecooked" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,10 +77,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Enable Notifications"/>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qio-bK-5Rz">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qio-bK-5Rz">
                                 <rect key="frame" x="20" y="685" width="126" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Enable Dark Mode"/>
+                                <connections>
+                                    <action selector="darkModeClicked:" destination="dHF-rk-VqX" eventType="touchUpInside" id="8Oq-Tj-3Uk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qae-OG-C6c">
                                 <rect key="frame" x="190" y="543" width="34" height="30"/>
@@ -102,8 +105,9 @@
                         <viewLayoutGuide key="safeArea" id="zvi-5l-a4N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" id="WfH-b2-qBm"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="WfH-b2-qBm"/>
                     <connections>
+                        <outlet property="darkModeBtn" destination="qio-bK-5Rz" id="nl4-bW-UTB"/>
                         <outlet property="emailTextField" destination="heU-hx-ePc" id="z6k-6t-QkK"/>
                         <outlet property="nameTextField" destination="XB9-44-xcJ" id="0x1-Bo-mOG"/>
                         <outlet property="phoneTextField" destination="x2d-qX-UJP" id="RUB-Co-oLo"/>
@@ -275,7 +279,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.92931067940000001" green="0.92946994299999997" blue="0.92930072549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="separatorColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fn7-U7-iug"/>
@@ -801,16 +805,16 @@
             <point key="canvasLocation" x="-1962" y="-255"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="w4n-9d-gwy"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="egg" width="1921" height="886"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="mappin.circle.fill" catalog="system" width="128" height="121"/>
         <image name="mealSelect" width="280" height="280"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="placeholderProfileImage" width="500" height="500"/>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

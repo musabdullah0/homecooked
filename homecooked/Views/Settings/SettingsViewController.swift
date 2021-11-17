@@ -14,9 +14,11 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var darkModeBtn: UIButton!
     
     let imagePicker = UIImagePickerController()
     var storageRef: StorageReference!
+    var darkMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,5 +136,21 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
         }
 
     }
+    
+    @IBAction func darkModeClicked(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let appdelegate = UIApplication.shared.windows.first
+            if (darkMode) {
+                appdelegate?.overrideUserInterfaceStyle = .light
+                darkModeBtn.setTitle("Enable Dark Mode", for: .normal)
+                darkMode = false
+            } else {
+                appdelegate?.overrideUserInterfaceStyle = .dark
+                darkModeBtn.setTitle("Enable Light Mode", for: .normal)
+                darkMode = true
+            }
+        }
+    }
+    
     
 }
