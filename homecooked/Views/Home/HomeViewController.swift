@@ -41,6 +41,21 @@ class HomeViewController: UIViewController {
         }
         let storage = Storage.storage()
         storageRef = storage.reference()
+        
+        // set dark mode
+        if #available(iOS 13.0, *) {
+            let appdelegate = UIApplication.shared.windows.first
+            let userDefaults = UserDefaults()
+            if let darkMode = userDefaults.value(forKey: "darkMode") as? Bool {
+                if (darkMode) {
+                    print("setting app to dark mode")
+                    appdelegate?.overrideUserInterfaceStyle = .dark
+                } else {
+                    print("setting app to light mode")
+                    appdelegate?.overrideUserInterfaceStyle = .light
+                }
+            }
+        }
 
     }
     

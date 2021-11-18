@@ -11,7 +11,7 @@
         <!--Profile-->
         <scene sceneID="uSn-nB-8zv">
             <objects>
-                <viewController id="dHF-rk-VqX" customClass="SettingsViewController" customModule="homecooked" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dHF-rk-VqX" customClass="ProfileViewController" customModule="homecooked" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i7S-37-03p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,8 +77,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Enable Notifications"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qio-bK-5Rz">
-                                <rect key="frame" x="20" y="685" width="126" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qio-bK-5Rz">
+                                <rect key="frame" x="20" y="685" width="172" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Enable Dark Mode"/>
                                 <connections>

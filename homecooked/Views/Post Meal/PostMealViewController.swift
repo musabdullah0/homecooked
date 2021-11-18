@@ -131,13 +131,6 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
             let lat = placemark?.location?.coordinate.latitude
             let long = placemark?.location?.coordinate.longitude
             
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd/MM/yy"
-//            let availableFromString = dateFormatter.string(from: self.availableFrom.date)
-//            let availableUntilString = dateFormatter.string(from: self.availableUntil.date)
-            print(self.availableFrom.date)
-            print(self.availableUntil.date)
-            
             self.postMealToFirebase(title: title, portions: Int(portions) ?? 0, price: Float(price) ?? 0.0, ingredients: self.parseIngredients(ingredientsString), from: self.availableFrom.date, until: self.availableUntil.date, lat: lat ?? 0.0, long: long ?? 0.0, uuid: uuid)
         }
 

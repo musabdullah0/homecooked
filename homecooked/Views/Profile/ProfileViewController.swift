@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -17,8 +17,8 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var darkModeBtn: UIButton!
     
     let imagePicker = UIImagePickerController()
+    let userDefaults = UserDefaults()
     var storageRef: StorageReference!
-    var darkMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,20 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
                 self.nameTextField.text = name
                 self.phoneTextField.text = phoneString
             }
+        }
+        
+        let appdelegate = UIApplication.shared.windows.first
+        if let darkMode = userDefaults.value(forKey: "darkMode") as? Bool {
+            if (darkMode) {
+                darkModeBtn.setTitle("Enable Light Mode", for: .normal)
+                appdelegate?.overrideUserInterfaceStyle = .dark
+            } else {
+                darkModeBtn.setTitle("Enable Dark Mode", for: .normal)
+                appdelegate?.overrideUserInterfaceStyle = .light
+            }
+        } else {
+            darkModeBtn.setTitle("Enable Dark Mode", for: .normal)
+            userDefaults.setValue(false, forKey: "darkMode")
         }
         
     }
@@ -140,15 +154,20 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func darkModeClicked(_ sender: Any) {
         if #available(iOS 13.0, *) {
             let appdelegate = UIApplication.shared.windows.first
-            if (darkMode) {
-                appdelegate?.overrideUserInterfaceStyle = .light
-                darkModeBtn.setTitle("Enable Dark Mode", for: .normal)
-                darkMode = false
-            } else {
-                appdelegate?.overrideUserInterfaceStyle = .dark
-                darkModeBtn.setTitle("Enable Light Mode", for: .normal)
-                darkMode = true
+            
+            if let darkMode = userDefaults.value(forKey: "darkMode") as? Bool {
+                if (!darkMode) {
+                    appdelegate?.overrideUserInterfaceStyle = .dark
+                    darkModeBtn.setTitle("Enable Light Mode", for: .normal)
+                    userDefaults.setValue(true, forKey: "darkMode")
+                } else {
+                    appdelegate?.overrideUserInterfaceStyle = .light
+                    darkModeBtn.setTitle("Enable Dark Mode", for: .normal)
+                    userDefaults.setValue(false, forKey: "darkMode")
+                }
             }
+            
+
         }
     }
     

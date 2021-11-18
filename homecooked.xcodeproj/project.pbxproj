@@ -17,7 +17,7 @@
 		D61D744A2714C90B00B38959 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D61D74492714C90B00B38959 /* Assets.xcassets */; };
 		D61D744D2714C90B00B38959 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61D744B2714C90B00B38959 /* LaunchScreen.storyboard */; };
 		D61D74592714EC0000B38959 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74582714EC0000B38959 /* HomeViewController.swift */; };
-		D61D745D2714F28C00B38959 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D745C2714F28C00B38959 /* SettingsViewController.swift */; };
+		D61D745D2714F28C00B38959 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D745C2714F28C00B38959 /* ProfileViewController.swift */; };
 		D61D74612715FA4B00B38959 /* MealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74602715FA4B00B38959 /* MealTableViewCell.swift */; };
 		D61D74652715FBF400B38959 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74642715FBF400B38959 /* Meal.swift */; };
 		D61D746A2716565F00B38959 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */; };
@@ -41,7 +41,7 @@
 		D61D744C2714C90B00B38959 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D61D744E2714C90B00B38959 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D61D74582714EC0000B38959 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		D61D745C2714F28C00B38959 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D61D745C2714F28C00B38959 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D61D74602715FA4B00B38959 /* MealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTableViewCell.swift; sourceTree = "<group>"; };
 		D61D74642715FBF400B38959 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -132,11 +132,11 @@
 		D61D74552714EA2C00B38959 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D69749E52745DAA4007488AC /* Profile */,
 				D61F8BDD2731CAFC0062DC00 /* Map */,
 				D6D570FA2720B2F200495199 /* Auth */,
 				033A91AF2720A61700528684 /* Meal Details */,
 				033A91AC2720A0AB00528684 /* Post Meal */,
-				D61D74672715FD6B00B38959 /* Settings */,
 				D61D74572714EBEC00B38959 /* Home */,
 			);
 			path = Views;
@@ -167,14 +167,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D61D74672715FD6B00B38959 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				D61D745C2714F28C00B38959 /* SettingsViewController.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		D61F8BDD2731CAFC0062DC00 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +185,14 @@
 				D61F8BDA2730F6720062DC00 /* String+Extensions.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		D69749E52745DAA4007488AC /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D61D745C2714F28C00B38959 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		D6D570FA2720B2F200495199 /* Auth */ = {
@@ -328,7 +328,7 @@
 				D61F8BDF2731CB150062DC00 /* MapViewController.swift in Sources */,
 				D6D571002720B32F00495199 /* SignUpViewController.swift in Sources */,
 				D61D74432714C90100B38959 /* SceneDelegate.swift in Sources */,
-				D61D745D2714F28C00B38959 /* SettingsViewController.swift in Sources */,
+				D61D745D2714F28C00B38959 /* ProfileViewController.swift in Sources */,
 				033A91B12720A63700528684 /* MealDetailsViewController.swift in Sources */,
 				D61D74592714EC0000B38959 /* HomeViewController.swift in Sources */,
 				D6D570FC2720B32400495199 /* LoginViewController.swift in Sources */,
