@@ -41,10 +41,7 @@ class SignUpViewController: UIViewController {
                         }
 
                     }
-                    
-                    let vc = strongSelf.storyboard?.instantiateViewController(withIdentifier: "tabbar") as! UIViewController
-                    vc.modalPresentationStyle = .fullScreen
-                    strongSelf.present(vc, animated: true)
+                    strongSelf.performSegue(withIdentifier: "signUpToHomeSegue", sender: strongSelf)
 
                 }
             }

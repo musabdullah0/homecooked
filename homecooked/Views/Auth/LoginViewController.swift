@@ -19,6 +19,14 @@ class LoginViewController: UIViewController {
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if Auth.auth().currentUser != nil {
+            print("already logged in")
+            performSegue(withIdentifier: "GoHomeSegue", sender: self)
+        }
+    }
+    
     
     @IBAction func clickedLogin(_ sender: Any) {
         if let email = emailTextField.text, let password = passwordTextField.text {
@@ -29,9 +37,7 @@ class LoginViewController: UIViewController {
                     print("error: \(error.localizedDescription)")
                 } else {
                     print("login success: \(String(describing: authResult))")
-                    let vc = strongSelf.storyboard?.instantiateViewController(withIdentifier: "tabbar") as! UIViewController
-                    vc.modalPresentationStyle = .fullScreen
-                    strongSelf.present(vc, animated: true)
+                    strongSelf.performSegue(withIdentifier: "GoHomeSegue", sender: strongSelf)
                 }
             }
         }

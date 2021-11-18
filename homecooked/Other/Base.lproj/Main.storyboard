@@ -683,11 +683,12 @@
                     <connections>
                         <outlet property="emailTextField" destination="YTv-IM-Aay" id="Fqe-0H-gje"/>
                         <outlet property="passwordTextField" destination="ogJ-Cn-PRy" id="LM1-jd-Q8a"/>
+                        <segue destination="ir2-XZ-ULD" kind="presentation" identifier="GoHomeSegue" modalPresentationStyle="fullScreen" id="xUh-rL-JpT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXC-bY-mdb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2699" y="-255"/>
+            <point key="canvasLocation" x="-1741" y="-559"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="O0w-yA-HUg">
@@ -707,7 +708,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEg-u3-b9c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1027" y="-255"/>
+            <point key="canvasLocation" x="-1028" y="-184"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="fzz-z2-gQc">
@@ -798,13 +799,17 @@
                         <outlet property="emailTextField" destination="1NY-cJ-rxj" id="hG6-jr-Ff3"/>
                         <outlet property="nameTextField" destination="MJZ-nO-NvD" id="hQC-W3-G1E"/>
                         <outlet property="passwordTextField" destination="h9l-lv-TBA" id="TXE-ec-yQJ"/>
+                        <segue destination="ir2-XZ-ULD" kind="presentation" identifier="signUpToHomeSegue" modalPresentationStyle="fullScreen" id="XSr-Jz-buk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xtn-af-XEw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1962" y="-255"/>
+            <point key="canvasLocation" x="-2577" y="-208"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="XSr-Jz-buk"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="egg" width="1921" height="886"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
