@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		033A91AE2720A0BE00528684 /* PostMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033A91AD2720A0BE00528684 /* PostMealViewController.swift */; };
 		033A91B12720A63700528684 /* MealDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033A91B02720A63700528684 /* MealDetailsViewController.swift */; };
+		0361F6C627548E590009E155 /* OrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361F6C527548E590009E155 /* OrdersViewController.swift */; };
+		0361F6C8275491150009E155 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361F6C7275491150009E155 /* CartTableViewCell.swift */; };
+		0361F6CA275491B30009E155 /* PostedMealTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361F6C9275491B30009E155 /* PostedMealTableViewCell.swift */; };
 		039676262745B26A009806AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 039676252745B26A009806AE /* GoogleService-Info.plist */; };
 		497A3CEFBD61A6C92232838F /* Pods_homecooked.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B2668627446F7FD3D832EA /* Pods_homecooked.framework */; };
 		D603DC6F27549D2B003E4358 /* MealAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603DC6E27549D2B003E4358 /* MealAnnotation.swift */; };
@@ -33,6 +36,9 @@
 /* Begin PBXFileReference section */
 		033A91AD2720A0BE00528684 /* PostMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMealViewController.swift; sourceTree = "<group>"; };
 		033A91B02720A63700528684 /* MealDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailsViewController.swift; sourceTree = "<group>"; };
+		0361F6C527548E590009E155 /* OrdersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersViewController.swift; sourceTree = "<group>"; };
+		0361F6C7275491150009E155 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		0361F6C9275491B30009E155 /* PostedMealTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedMealTableViewCell.swift; sourceTree = "<group>"; };
 		039676252745B26A009806AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7DBD206D39E981E6FDF06B76 /* Pods-homecooked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homecooked.release.xcconfig"; path = "Target Support Files/Pods-homecooked/Pods-homecooked.release.xcconfig"; sourceTree = "<group>"; };
 		C1B2668627446F7FD3D832EA /* Pods_homecooked.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_homecooked.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +90,14 @@
 				033A91B02720A63700528684 /* MealDetailsViewController.swift */,
 			);
 			path = "Meal Details";
+			sourceTree = "<group>";
+		};
+		0361F6C427548E2F0009E155 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				0361F6C527548E590009E155 /* OrdersViewController.swift */,
+			);
+			path = Orders;
 			sourceTree = "<group>";
 		};
 		568854E913E974C346305339 /* Pods */ = {
@@ -138,6 +152,7 @@
 		D61D74552714EA2C00B38959 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0361F6C427548E2F0009E155 /* Orders */,
 				D69749E52745DAA4007488AC /* Profile */,
 				D61F8BDD2731CAFC0062DC00 /* Map */,
 				D6D570FA2720B2F200495199 /* Auth */,
@@ -161,8 +176,13 @@
 			children = (
 				D61D74602715FA4B00B38959 /* MealTableViewCell.swift */,
 				D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */,
+<<<<<<< HEAD
 				D66F4665274702E600C63A18 /* MIBubbleCollectionViewCell.swift */,
 				D66F46682747031F00C63A18 /* MICollectionViewBubbleLayout.swift */,
+=======
+				0361F6C7275491150009E155 /* CartTableViewCell.swift */,
+				0361F6C9275491B30009E155 /* PostedMealTableViewCell.swift */,
+>>>>>>> orders
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -331,17 +351,23 @@
 				D61D746A2716565F00B38959 /* CategoryCollectionViewCell.swift in Sources */,
 				D61D74412714C90100B38959 /* AppDelegate.swift in Sources */,
 				D61D74652715FBF400B38959 /* Meal.swift in Sources */,
+				0361F6C627548E590009E155 /* OrdersViewController.swift in Sources */,
 				D61D74612715FA4B00B38959 /* MealTableViewCell.swift in Sources */,
 				D61F8BDB2730F6720062DC00 /* String+Extensions.swift in Sources */,
 				033A91AE2720A0BE00528684 /* PostMealViewController.swift in Sources */,
 				D66F46692747031F00C63A18 /* MICollectionViewBubbleLayout.swift in Sources */,
 				D61F8BDF2731CB150062DC00 /* MapViewController.swift in Sources */,
 				D6D571002720B32F00495199 /* SignUpViewController.swift in Sources */,
+<<<<<<< HEAD
 				D603DC6F27549D2B003E4358 /* MealAnnotation.swift in Sources */,
 				D66F4666274702E600C63A18 /* MIBubbleCollectionViewCell.swift in Sources */,
+=======
+				0361F6CA275491B30009E155 /* PostedMealTableViewCell.swift in Sources */,
+>>>>>>> orders
 				D61D74432714C90100B38959 /* SceneDelegate.swift in Sources */,
 				D61D745D2714F28C00B38959 /* ProfileViewController.swift in Sources */,
 				033A91B12720A63700528684 /* MealDetailsViewController.swift in Sources */,
+				0361F6C8275491150009E155 /* CartTableViewCell.swift in Sources */,
 				D61D74592714EC0000B38959 /* HomeViewController.swift in Sources */,
 				D6D570FC2720B32400495199 /* LoginViewController.swift in Sources */,
 			);

@@ -35,7 +35,7 @@ class Meal {
         self.location = defaultLocation
     }
     
-    init(withDoc: QueryDocumentSnapshot) {
+    init(withDoc: DocumentSnapshot) {
         self.meal_id = withDoc.documentID
         self.chef_id = withDoc.get("chef_id") as? String ?? "no chef"
         
