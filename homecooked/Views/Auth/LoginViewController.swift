@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
         errorMessageLabel.isHidden = true
         errorMessageLabel.textColor = .red
         errorMessageLabel.adjustsFontSizeToFitWidth = true
+        errorMessageLabel.textAlignment = .center
     }
     
     @IBAction func clickedLogin(_ sender: Any) {

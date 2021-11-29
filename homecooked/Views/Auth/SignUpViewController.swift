@@ -22,6 +22,7 @@ class SignUpViewController: UIViewController {
         errorMessageLabel.isHidden = true
         errorMessageLabel.textColor = .red
         errorMessageLabel.adjustsFontSizeToFitWidth = true
+        errorMessageLabel.textAlignment = .center
     }
     
 

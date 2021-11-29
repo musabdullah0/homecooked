@@ -31,6 +31,11 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         postMealButton.layer.cornerRadius = 10
+        imageDisplay.clipsToBounds = true
+        imageDisplay.layer.cornerRadius = imageDisplay.frame.width / 2
+        imageDisplay.layer.borderColor = UIColor.white.cgColor
+        imageDisplay.layer.borderWidth = 6
+        imageDisplay.contentMode = .scaleToFill
     }
     
     @IBAction func imageSelect(_ sender: Any) {
