@@ -176,13 +176,10 @@
 			children = (
 				D61D74602715FA4B00B38959 /* MealTableViewCell.swift */,
 				D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */,
-<<<<<<< HEAD
 				D66F4665274702E600C63A18 /* MIBubbleCollectionViewCell.swift */,
 				D66F46682747031F00C63A18 /* MICollectionViewBubbleLayout.swift */,
-=======
 				0361F6C7275491150009E155 /* CartTableViewCell.swift */,
 				0361F6C9275491B30009E155 /* PostedMealTableViewCell.swift */,
->>>>>>> orders
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -358,12 +355,9 @@
 				D66F46692747031F00C63A18 /* MICollectionViewBubbleLayout.swift in Sources */,
 				D61F8BDF2731CB150062DC00 /* MapViewController.swift in Sources */,
 				D6D571002720B32F00495199 /* SignUpViewController.swift in Sources */,
-<<<<<<< HEAD
 				D603DC6F27549D2B003E4358 /* MealAnnotation.swift in Sources */,
 				D66F4666274702E600C63A18 /* MIBubbleCollectionViewCell.swift in Sources */,
-=======
 				0361F6CA275491B30009E155 /* PostedMealTableViewCell.swift in Sources */,
->>>>>>> orders
 				D61D74432714C90100B38959 /* SceneDelegate.swift in Sources */,
 				D61D745D2714F28C00B38959 /* ProfileViewController.swift in Sources */,
 				033A91B12720A63700528684 /* MealDetailsViewController.swift in Sources */,
