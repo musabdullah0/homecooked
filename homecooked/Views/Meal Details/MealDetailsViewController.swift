@@ -11,6 +11,8 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseStorageUI
 import CoreLocation
+import FirebaseAuth
+
 
 class MealDetailsViewController: UIViewController {
     
@@ -85,9 +87,38 @@ class MealDetailsViewController: UIViewController {
     // TODO: implement a ordering feature where the user posting a meal is notified
     // somebody is looking to purchase
     @IBAction func order(_ sender: Any) {
+        let chef = displayMeal.chef_id
+        let customer = Auth.auth().currentUser?.uid
+        let uuid = UUID().uuidString
         
+        Firestore.firestore().collection("orders").document(uuid).setData([
+            "chef_id": chef,
+            "customer_id": customer,
+            "meal_id": self.displayMeal.meal_id,
+        ]) { err in
+            if let err = err {
+                print("error")
+                self.sendAlert()
+            } else {
+                print("success")
+                self.displayMeal.portions -= 1
+                if (self.displayMeal.portions == 0) {
+                    Firestore.firestore().collection("meals").document(self.displayMeal.meal_id).delete()
+                }
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
+    func sendAlert() {
+        let alert = UIAlertController(title: "Order failed", message: "An error occurred while trying to process your order." , preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        
+        alert.present(alert, animated: true, completion: nil)
+    }
+
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
