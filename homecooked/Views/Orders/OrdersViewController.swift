@@ -33,8 +33,8 @@ class OrdersViewController: UIViewController {
         postedTableView.dataSource = self
         
         mealsRef = Firestore.firestore().collection("meals")
-        
         ordersRef = Firestore.firestore().collection("orders")
+        
         ordersRef.addSnapshotListener { (cartSnapshot, error) in
             self.cartSnapshotListener(cartSnapshot: cartSnapshot, error: error)
         }
@@ -45,21 +45,6 @@ class OrdersViewController: UIViewController {
         let storage = Storage.storage()
         storageRef = storage.reference()
         
-        
-        // set dark mode
-        if #available(iOS 13.0, *) {
-            let appdelegate = UIApplication.shared.windows.first
-            let userDefaults = UserDefaults()
-            if let darkMode = userDefaults.value(forKey: "darkMode") as? Bool {
-                if (darkMode) {
-                    print("setting app to dark mode")
-                    appdelegate?.overrideUserInterfaceStyle = .dark
-                } else {
-                    print("setting app to light mode")
-                    appdelegate?.overrideUserInterfaceStyle = .light
-                }
-            }
-        }
     }
     
     func cartSnapshotListener(cartSnapshot: QuerySnapshot?, error: Error?) {
@@ -79,11 +64,11 @@ class OrdersViewController: UIViewController {
                         mealDocRef.getDocument { (document, error) in
                             if let document = document, document.exists {
                                     let meal = Meal(withDoc: document)
-                                    print(meal)
                                     self.cart.append(meal)
-                                } else {
-                                    print("Document does not exist")
-                                }
+                                    self.cartTableView.reloadData()
+                            } else {
+                                print("Document does not exist")
+                            }
                         }
                     }
                     
@@ -165,16 +150,18 @@ class OrdersViewController: UIViewController {
 extension OrdersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (tableView == self.cartTableView){
-            return self.cart.count
+            return cart.count
         }
         else {
-            return self.posted.count
+            return posted.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (tableView == self.cartTableView){
             let meal = cart[indexPath.row]
+            print("showing meal", indexPath.row)
+            print(meal)
             let cell = cartTableView.dequeueReusableCell(withIdentifier: "CartCellIdentifier") as! CartTableViewCell
 
             let reference = storageRef.child("\(meal.meal_id).jpg")
