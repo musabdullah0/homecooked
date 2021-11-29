@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -128,6 +129,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sfn-Ol-Fzu">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <connections>
+                                    <outlet property="delegate" destination="L4C-KD-kTi" id="3bc-Nf-Phn"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CRi-5d-gHm"/>
@@ -142,11 +146,12 @@
                     <tabBarItem key="tabBarItem" title="Map" image="mappin.circle.fill" catalog="system" selectedImage="mappin.circle.fill" id="cWW-zf-scH"/>
                     <connections>
                         <outlet property="mapView" destination="Sfn-Ol-Fzu" id="i7Z-kw-JjY"/>
+                        <segue destination="6NH-Ur-2Hb" kind="show" identifier="mapToMealDetailSegue" id="uZb-ZB-vk8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJR-gt-NFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-986.95652173913049" y="639.50892857142856"/>
+            <point key="canvasLocation" x="-925" y="-1040"/>
         </scene>
         <!--Home-->
         <scene sceneID="pAC-Xf-KXq">
@@ -308,7 +313,7 @@
         <!--Meal Details View Controller-->
         <scene sceneID="dRg-3k-bdS">
             <objects>
-                <viewController id="6NH-Ur-2Hb" customClass="MealDetailsViewController" customModule="homecooked" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mealDetailsVC" id="6NH-Ur-2Hb" customClass="MealDetailsViewController" customModule="homecooked" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9J5-aI-nrX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -387,13 +392,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73D-e5-Yr5">
-                                <rect key="frame" x="20" y="460" width="374" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCF-R4-82F">
                                 <rect key="frame" x="20" y="748" width="374" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -430,15 +428,50 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C9r-sc-rlg">
+                                <rect key="frame" x="13" y="460" width="381" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3KT-zW-wSE">
+                                    <size key="itemSize" width="128" height="37"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="161-Iw-VPg" customClass="MIBubbleCollectionViewCell" customModule="homecooked" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OVr-5D-WB8">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="37"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCK-dH-F2d">
+                                                    <rect key="frame" x="43" y="8" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="128" height="37"/>
+                                        <connections>
+                                            <outlet property="lblTitle" destination="bCK-dH-F2d" id="dh4-Ud-u8f"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kV6-jS-JEA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="B3G-oM-Wph"/>
                     <connections>
                         <outlet property="availableFrom" destination="dcr-MF-qaD" id="XoD-n3-JKJ"/>
                         <outlet property="availableUntil" destination="ghI-eq-A4k" id="rqR-Lc-RHJ"/>
                         <outlet property="imageDisplay" destination="7QU-1b-aiH" id="Muj-HR-gpb"/>
-                        <outlet property="ingredients" destination="73D-e5-Yr5" id="Gzl-kC-9vh"/>
+                        <outlet property="ingredientsCollectionView" destination="C9r-sc-rlg" id="W5o-kK-Oep"/>
                         <outlet property="locationLabel" destination="duz-fd-4Gd" id="EF4-qS-tie"/>
                         <outlet property="mealName" destination="LAT-rq-URt" id="aze-yu-glR"/>
                         <outlet property="numPortions" destination="GkW-YY-gVn" id="HEP-uc-KqH"/>
@@ -809,6 +842,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="XSr-Jz-buk"/>
+        <segue reference="uZb-ZB-vk8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="egg" width="1921" height="886"/>

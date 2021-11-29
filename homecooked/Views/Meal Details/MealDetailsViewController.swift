@@ -16,16 +16,18 @@ class MealDetailsViewController: UIViewController {
     
     var storageRef: StorageReference!
     var displayMeal = Meal()
+    var ingredientsList = [String]()
+    private let kItemPadding = 15
 
     @IBOutlet weak var imageDisplay: UIImageView!
     @IBOutlet weak var mealName: UILabel!
     @IBOutlet weak var numPortions: UILabel!
     @IBOutlet weak var portionPrice: UILabel!
-    @IBOutlet weak var ingredients: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var availableFrom: UIDatePicker!
     @IBOutlet weak var availableUntil: UIDatePicker!
     
+    @IBOutlet weak var ingredientsCollectionView: UICollectionView!
     
 
     override func viewDidLoad() {
@@ -41,14 +43,14 @@ class MealDetailsViewController: UIViewController {
         imageDisplay.clipsToBounds = true
         imageDisplay.contentMode = .scaleAspectFill
         
-        mealName.text = displayMeal.title
-        numPortions.text = String(displayMeal.portions)
-        portionPrice.text = String(displayMeal.price)
-        ingredients.text = displayMeal.ingredients.joined(separator: ",")
-
-       
-        availableFrom.date =  displayMeal.available_from
-        availableUntil.date = displayMeal.available_until
+//        mealName.text = displayMeal.title
+//        numPortions.text = String(displayMeal.portions)
+//        portionPrice.text = String(displayMeal.price)
+//        ingredientsList = displayMeal.ingredients
+//        print(displayMeal)
+////        ingredients.text = displayMeal.ingredients.joined(separator: ",")
+//        availableFrom.date =  displayMeal.available_from
+//        availableUntil.date = displayMeal.available_until
         
         let clocation = CLLocation(latitude: displayMeal.location.latitude, longitude: displayMeal.location.longitude)
         
@@ -68,6 +70,25 @@ class MealDetailsViewController: UIViewController {
             self.locationLabel.text = address
 
         })
+        
+        // ingredients bubble layout setup stuff
+        let bubbleLayout = MICollectionViewBubbleLayout()
+        bubbleLayout.minimumLineSpacing = 6.0
+        bubbleLayout.minimumInteritemSpacing = 6.0
+        bubbleLayout.delegate = self
+        ingredientsCollectionView.setCollectionViewLayout(bubbleLayout, animated: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        mealName.text = displayMeal.title
+        numPortions.text = String(displayMeal.portions)
+        portionPrice.text = String(displayMeal.price)
+        ingredientsList = displayMeal.ingredients
+        print(displayMeal)
+//        ingredients.text = displayMeal.ingredients.joined(separator: ",")
+        availableFrom.date =  displayMeal.available_from
+        availableUntil.date = displayMeal.available_until
     }
     
     // TODO: implement a ordering feature where the user posting a meal is notified
@@ -81,4 +102,39 @@ class MealDetailsViewController: UIViewController {
     }
     
 
+}
+
+
+extension MealDetailsViewController: MICollectionViewBubbleLayoutDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return ingredientsList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let indentifier = "MIBubbleCollectionViewCell"
+                
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: indentifier, for: indexPath) as? MIBubbleCollectionViewCell {
+            
+            cell.lblTitle.text = ingredientsList[indexPath.row]
+            print("adding cell for",ingredientsList[indexPath.row])
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, itemSizeAt indexPath: NSIndexPath) -> CGSize {
+        let title = ingredientsList[indexPath.row] as NSString
+        var size = title.size(withAttributes: [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
+         size.width = CGFloat(ceilf(Float(size.width + CGFloat(kItemPadding * 2))))
+         size.height = 24
+     
+         //...Checking if item width is greater than collection view width then set item width == collection view width.
+         if size.width > collectionView.frame.size.width {
+             size.width = collectionView.frame.size.width
+         }
+     
+         return size;
+    }
+    
+    
 }

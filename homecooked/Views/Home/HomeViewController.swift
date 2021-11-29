@@ -127,6 +127,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let reference = storageRef.child("\(meal.meal_id).jpg")
         cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
+        cell.mealImage.contentMode = .scaleAspectFill
         cell.mealTitle.text = meal.title
         cell.mealCost.text = "$\(meal.price)"
         cell.mealRemaining.text = "\(meal.portions) remaining"

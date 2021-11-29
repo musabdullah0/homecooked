@@ -15,7 +15,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
     let manager = CLLocationManager()
-    
+    var meals: [Meal] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +31,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     let chef_id = doc.get("chef_id") as? String ?? "no id"
                     let userDocRef = Firestore.firestore().collection("users").document(chef_id)
                     
+                    let meal = Meal(withDoc: doc)
+                    
                     userDocRef.getDocument { (doc, err) in
                         var name = ""
                         if let doc = doc, doc.exists {
@@ -39,10 +42,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                         }
                         
                         
-                        let annotation = MKPointAnnotation()
+//                        let annotation = MKPointAnnotation()
+                        let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                        let annotation = MealAnnotation(meal: meal, coordinate: coordinate)
                         annotation.title = title
                         annotation.subtitle = name
-                        annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+//                        annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
                         self.mapView.addAnnotation(annotation)
                     }
                 }
@@ -74,5 +79,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapView.setRegion(region, animated: true)
     }
+    
 
+}
+
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("clicked on meal annotation")
+        
+        guard let mealAnnotation = view.annotation as? MealAnnotation else {return}
+        let destinationVC = self.storyboard?.instantiateViewController(identifier: "mealDetailsVC") as! MealDetailsViewController
+
+        print(mealAnnotation.meal)
+        destinationVC.displayMeal = mealAnnotation.meal
+        self.present(destinationVC, animated: true, completion: nil)
+//        performSegue(withIdentifier: "mapToMealDetailSegue", sender: self)
+        
+
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MealAnnotation else {return nil}
+        let identifier = "Meal"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = btn
+        } else {
+            annotationView?.annotation = annotation
+        }
+        return annotationView
+    }
 }

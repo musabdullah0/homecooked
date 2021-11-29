@@ -11,6 +11,7 @@
 		033A91B12720A63700528684 /* MealDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033A91B02720A63700528684 /* MealDetailsViewController.swift */; };
 		039676262745B26A009806AE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 039676252745B26A009806AE /* GoogleService-Info.plist */; };
 		497A3CEFBD61A6C92232838F /* Pods_homecooked.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1B2668627446F7FD3D832EA /* Pods_homecooked.framework */; };
+		D603DC6F27549D2B003E4358 /* MealAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603DC6E27549D2B003E4358 /* MealAnnotation.swift */; };
 		D61D74412714C90100B38959 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74402714C90100B38959 /* AppDelegate.swift */; };
 		D61D74432714C90100B38959 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74422714C90100B38959 /* SceneDelegate.swift */; };
 		D61D74482714C90100B38959 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61D74462714C90100B38959 /* Main.storyboard */; };
@@ -23,6 +24,8 @@
 		D61D746A2716565F00B38959 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */; };
 		D61F8BDB2730F6720062DC00 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61F8BDA2730F6720062DC00 /* String+Extensions.swift */; };
 		D61F8BDF2731CB150062DC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61F8BDE2731CB150062DC00 /* MapViewController.swift */; };
+		D66F4666274702E600C63A18 /* MIBubbleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66F4665274702E600C63A18 /* MIBubbleCollectionViewCell.swift */; };
+		D66F46692747031F00C63A18 /* MICollectionViewBubbleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66F46682747031F00C63A18 /* MICollectionViewBubbleLayout.swift */; };
 		D6D570FC2720B32400495199 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D570FB2720B32400495199 /* LoginViewController.swift */; };
 		D6D571002720B32F00495199 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D570FF2720B32F00495199 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +36,7 @@
 		039676252745B26A009806AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7DBD206D39E981E6FDF06B76 /* Pods-homecooked.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homecooked.release.xcconfig"; path = "Target Support Files/Pods-homecooked/Pods-homecooked.release.xcconfig"; sourceTree = "<group>"; };
 		C1B2668627446F7FD3D832EA /* Pods_homecooked.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_homecooked.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D603DC6E27549D2B003E4358 /* MealAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealAnnotation.swift; sourceTree = "<group>"; };
 		D61D743D2714C90100B38959 /* homecooked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = homecooked.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61D74402714C90100B38959 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D61D74422714C90100B38959 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +51,8 @@
 		D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		D61F8BDA2730F6720062DC00 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		D61F8BDE2731CB150062DC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D66F4665274702E600C63A18 /* MIBubbleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIBubbleCollectionViewCell.swift; sourceTree = "<group>"; };
+		D66F46682747031F00C63A18 /* MICollectionViewBubbleLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MICollectionViewBubbleLayout.swift; sourceTree = "<group>"; };
 		D6D570FB2720B32400495199 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D6D570FF2720B32F00495199 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E5FBEDA41626EC8F62F8C7FD /* Pods-homecooked.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-homecooked.debug.xcconfig"; path = "Target Support Files/Pods-homecooked/Pods-homecooked.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +161,8 @@
 			children = (
 				D61D74602715FA4B00B38959 /* MealTableViewCell.swift */,
 				D61D74692716565F00B38959 /* CategoryCollectionViewCell.swift */,
+				D66F4665274702E600C63A18 /* MIBubbleCollectionViewCell.swift */,
+				D66F46682747031F00C63A18 /* MICollectionViewBubbleLayout.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -171,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				D61F8BDE2731CB150062DC00 /* MapViewController.swift */,
+				D603DC6E27549D2B003E4358 /* MealAnnotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -325,8 +334,11 @@
 				D61D74612715FA4B00B38959 /* MealTableViewCell.swift in Sources */,
 				D61F8BDB2730F6720062DC00 /* String+Extensions.swift in Sources */,
 				033A91AE2720A0BE00528684 /* PostMealViewController.swift in Sources */,
+				D66F46692747031F00C63A18 /* MICollectionViewBubbleLayout.swift in Sources */,
 				D61F8BDF2731CB150062DC00 /* MapViewController.swift in Sources */,
 				D6D571002720B32F00495199 /* SignUpViewController.swift in Sources */,
+				D603DC6F27549D2B003E4358 /* MealAnnotation.swift in Sources */,
+				D66F4666274702E600C63A18 /* MIBubbleCollectionViewCell.swift in Sources */,
 				D61D74432714C90100B38959 /* SceneDelegate.swift in Sources */,
 				D61D745D2714F28C00B38959 /* ProfileViewController.swift in Sources */,
 				033A91B12720A63700528684 /* MealDetailsViewController.swift in Sources */,
