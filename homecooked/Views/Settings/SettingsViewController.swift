@@ -43,6 +43,12 @@ class SettingsViewController: UIViewController, UIImagePickerControllerDelegate,
             }
         }
         
+        profileImage.clipsToBounds = true
+        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        profileImage.layer.borderColor = UIColor.black.cgColor
+        profileImage.layer.borderWidth = 6
+        profileImage.contentMode = .scaleToFill
+        
     }
     
     @IBAction func saveProfileClicked(_ sender: Any) {

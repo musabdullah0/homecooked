@@ -35,11 +35,6 @@ class MealDetailsViewController: UIViewController {
         let reference = storageRef.child("\(displayMeal.meal_id).jpg")
         imageDisplay.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
         
-//        imageDisplay.layer.cornerRadius = imageDisplay.frame.height / 2
-//        imageDisplay.layer.masksToBounds = false
-//        imageDisplay.clipsToBounds = true
-//        imageDisplay.contentMode = .scaleAspectFill
-        
         mealName.text = displayMeal.title
         numPortions.text = String(displayMeal.portions)
         portionPrice.text = String(displayMeal.price)
@@ -75,7 +70,7 @@ class MealDetailsViewController: UIViewController {
         imageDisplay.layer.borderWidth = 6
         imageDisplay.contentMode = .scaleToFill
         
-        orderButton.layer.cornerRadius = 10
+        orderButton.layer.cornerRadius = 8.0
     }
     
     // TODO: implement a ordering feature where the user posting a meal is notified
@@ -92,13 +87,25 @@ class MealDetailsViewController: UIViewController {
         ]) { err in
             if let err = err {
                 print("error")
-                // error alert
+                self.sendAlert()
             } else {
                 print("success")
-                // send notif
+                self.displayMeal.portions -= 1
+                if (self.displayMeal.portions == 0) {
+                    Firestore.firestore().collection("meals").document(self.displayMeal.meal_id).delete()
+                }
                 self.dismiss(animated: true, completion: nil)
             }
         }
+    }
+    
+    func sendAlert() {
+        let alert = UIAlertController(title: "Order failed", message: "An error occurred while trying to process your order." , preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        
+        alert.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: Any) {
