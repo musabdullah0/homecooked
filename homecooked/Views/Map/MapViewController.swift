@@ -93,8 +93,6 @@ extension MapViewController: MKMapViewDelegate {
         print(mealAnnotation.meal)
         destinationVC.displayMeal = mealAnnotation.meal
         self.present(destinationVC, animated: true, completion: nil)
-//        performSegue(withIdentifier: "mapToMealDetailSegue", sender: self)
-        
 
     }
     

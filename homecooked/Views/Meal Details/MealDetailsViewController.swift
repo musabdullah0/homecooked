@@ -105,7 +105,7 @@ class MealDetailsViewController: UIViewController {
 }
 
 
-extension MealDetailsViewController: MICollectionViewBubbleLayoutDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
+extension MealDetailsViewController: MICollectionViewBubbleLayoutDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ingredientsList.count
     }
@@ -124,7 +124,7 @@ extension MealDetailsViewController: MICollectionViewBubbleLayoutDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, itemSizeAt indexPath: NSIndexPath) -> CGSize {
         let title = ingredientsList[indexPath.row] as NSString
-        var size = title.size(withAttributes: [NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 15)!])
+        var size = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)])
          size.width = CGFloat(ceilf(Float(size.width + CGFloat(kItemPadding * 2))))
          size.height = 24
      

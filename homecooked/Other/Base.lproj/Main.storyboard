@@ -146,12 +146,11 @@
                     <tabBarItem key="tabBarItem" title="Map" image="mappin.circle.fill" catalog="system" selectedImage="mappin.circle.fill" id="cWW-zf-scH"/>
                     <connections>
                         <outlet property="mapView" destination="Sfn-Ol-Fzu" id="i7Z-kw-JjY"/>
-                        <segue destination="6NH-Ur-2Hb" kind="show" identifier="mapToMealDetailSegue" id="uZb-ZB-vk8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NJR-gt-NFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-925" y="-1040"/>
+            <point key="canvasLocation" x="-1029" y="567"/>
         </scene>
         <!--Home-->
         <scene sceneID="pAC-Xf-KXq">
@@ -433,34 +432,44 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3KT-zW-wSE">
-                                    <size key="itemSize" width="128" height="37"/>
+                                    <size key="itemSize" width="156" height="37"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="161-Iw-VPg" customClass="MIBubbleCollectionViewCell" customModule="homecooked" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="37"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MIBubbleCollectionViewCell" id="161-Iw-VPg" customClass="MIBubbleCollectionViewCell" customModule="homecooked" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="156" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OVr-5D-WB8">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="156" height="37"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCK-dH-F2d">
-                                                    <rect key="frame" x="43" y="8" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCK-dH-F2d">
+                                                    <rect key="frame" x="15" y="0.0" width="126" height="37"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="bCK-dH-F2d" secondAttribute="bottom" id="2rD-uY-FUs"/>
+                                                <constraint firstItem="bCK-dH-F2d" firstAttribute="top" secondItem="OVr-5D-WB8" secondAttribute="top" id="40v-gW-5VB"/>
+                                                <constraint firstItem="bCK-dH-F2d" firstAttribute="leading" secondItem="OVr-5D-WB8" secondAttribute="leading" constant="15" id="V7V-yN-A4M"/>
+                                                <constraint firstAttribute="trailing" secondItem="bCK-dH-F2d" secondAttribute="trailing" constant="15" id="WCO-C6-UBo"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="128" height="37"/>
+                                        <color key="backgroundColor" red="0.30660277609999997" green="0.79800665380000002" blue="0.44093972440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="customSize" width="156" height="37"/>
                                         <connections>
                                             <outlet property="lblTitle" destination="bCK-dH-F2d" id="dh4-Ud-u8f"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="6NH-Ur-2Hb" id="gYZ-xg-SWo"/>
+                                    <outlet property="delegate" destination="6NH-Ur-2Hb" id="TFf-H2-aWW"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kV6-jS-JEA"/>
@@ -842,7 +851,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="XSr-Jz-buk"/>
-        <segue reference="uZb-ZB-vk8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="egg" width="1921" height="886"/>
