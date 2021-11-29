@@ -398,6 +398,7 @@
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
                                 <connections>
+                                    <action selector="order:" destination="6NH-Ur-2Hb" eventType="touchUpInside" id="3mu-Ly-g6c"/>
                                     <action selector="postMeal:" destination="5lc-WM-Evf" eventType="touchUpInside" id="IfZ-B3-dIK"/>
                                 </connections>
                             </button>
@@ -438,6 +439,7 @@
                         <outlet property="locationLabel" destination="duz-fd-4Gd" id="EF4-qS-tie"/>
                         <outlet property="mealName" destination="LAT-rq-URt" id="aze-yu-glR"/>
                         <outlet property="numPortions" destination="GkW-YY-gVn" id="HEP-uc-KqH"/>
+                        <outlet property="orderButton" destination="ZCF-R4-82F" id="2J8-a5-Rm9"/>
                         <outlet property="portionPrice" destination="uxQ-kz-2ek" id="9Ey-zP-ZMz"/>
                     </connections>
                 </viewController>

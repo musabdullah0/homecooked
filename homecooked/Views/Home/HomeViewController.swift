@@ -31,7 +31,6 @@ class HomeViewController: UIViewController {
         postMealBtn.clipsToBounds = true
         titleView.layer.cornerRadius = 10
         titleView.layer.masksToBounds = true
-        
         mealTableView.delegate = self
         mealTableView.dataSource = self
         mealsRef = Firestore.firestore().collection("meals")
@@ -129,7 +128,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
-        
     }
 }
 

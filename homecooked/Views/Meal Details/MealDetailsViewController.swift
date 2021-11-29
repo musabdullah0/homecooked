@@ -25,9 +25,8 @@ class MealDetailsViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var availableFrom: UIDatePicker!
     @IBOutlet weak var availableUntil: UIDatePicker!
+    @IBOutlet weak var orderButton: UIButton!
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let storage = Storage.storage()
@@ -36,10 +35,10 @@ class MealDetailsViewController: UIViewController {
         let reference = storageRef.child("\(displayMeal.meal_id).jpg")
         imageDisplay.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
         
-        imageDisplay.layer.cornerRadius = imageDisplay.frame.height / 2
-        imageDisplay.layer.masksToBounds = false
-        imageDisplay.clipsToBounds = true
-        imageDisplay.contentMode = .scaleAspectFill
+//        imageDisplay.layer.cornerRadius = imageDisplay.frame.height / 2
+//        imageDisplay.layer.masksToBounds = false
+//        imageDisplay.clipsToBounds = true
+//        imageDisplay.contentMode = .scaleAspectFill
         
         mealName.text = displayMeal.title
         numPortions.text = String(displayMeal.portions)
@@ -68,17 +67,42 @@ class MealDetailsViewController: UIViewController {
             self.locationLabel.text = address
 
         })
+        
+        // Temporary?
+        imageDisplay.clipsToBounds = true
+        imageDisplay.layer.cornerRadius = imageDisplay.frame.width / 2
+        imageDisplay.layer.borderColor = UIColor.white.cgColor
+        imageDisplay.layer.borderWidth = 6
+        imageDisplay.contentMode = .scaleToFill
+        
+        orderButton.layer.cornerRadius = 10
     }
     
     // TODO: implement a ordering feature where the user posting a meal is notified
     // somebody is looking to purchase
     @IBAction func order(_ sender: Any) {
+        let chef = displayMeal.chef_id
+        let customer = Auth.auth().currentUser?.uid
+        let uuid = UUID().uuidString
         
+        Firestore.firestore().collection("orders").document(uuid).setData([
+            "chef_id": chef,
+            "customer_id": customer,
+            "meal_id": self.displayMeal.meal_id,
+        ]) { err in
+            if let err = err {
+                print("error")
+                // error alert
+            } else {
+                print("success")
+                // send notif
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func cancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-
 }
