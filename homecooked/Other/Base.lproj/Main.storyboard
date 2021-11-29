@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a4u-lt-XOl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ir2-XZ-ULD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -181,7 +181,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MealCellIdentifier" rowHeight="90" id="7FI-f8-HLA" customClass="MealTableViewCell" customModule="homecooked" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="406" height="90"/>
+                                                <rect key="frame" x="0.0" y="24.5" width="406" height="90"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7FI-f8-HLA" id="EMP-Ww-jGU">
                                                     <rect key="frame" x="0.0" y="0.0" width="406" height="90"/>
@@ -765,7 +765,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-Do-ykq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="198"/>
+                                <rect key="frame" x="0.0" y="0.0" width="508" height="198"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6d-Yf-eKk">
@@ -792,10 +792,6 @@
                                     <action selector="imageSelect:" destination="5lc-WM-Evf" eventType="touchUpInside" id="rlO-8Q-5lc"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mealSelect" translatesAutoresizingMaskIntoConstraints="NO" id="7gj-oG-2I1">
-                                <rect key="frame" x="59" y="20" width="296" height="157"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1tM-Qj-1hh">
                                 <rect key="frame" x="154" y="527" width="239" height="72"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -826,6 +822,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mealSelect" translatesAutoresizingMaskIntoConstraints="NO" id="7gj-oG-2I1">
+                                <rect key="frame" x="127" y="20" width="161" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.30660277609999997" green="0.79800665380000002" blue="0.44093972440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PKD-Nx-EAN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -915,12 +916,20 @@
                                     <action selector="clickedLogin:" destination="a4u-lt-XOl" eventType="touchUpInside" id="FdC-9i-vHH"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9S-1M-WQf">
+                                <rect key="frame" x="20" y="263" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cWS-j3-YnJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="YTv-IM-Aay" id="Fqe-0H-gje"/>
+                        <outlet property="errorMessageLabel" destination="w9S-1M-WQf" id="oGz-PV-chU"/>
                         <outlet property="passwordTextField" destination="ogJ-Cn-PRy" id="LM1-jd-Q8a"/>
                         <segue destination="ir2-XZ-ULD" kind="presentation" identifier="GoHomeSegue" modalPresentationStyle="fullScreen" id="xUh-rL-JpT"/>
                     </connections>
@@ -938,6 +947,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.30660277609999997" green="0.79800665380000002" blue="0.44093972440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="10l-Y9-fbT" kind="relationship" relationship="viewControllers" id="APg-et-3Sh"/>
@@ -1030,6 +1040,13 @@
                                     <action selector="clickedSignup:" destination="2wa-3J-2ca" eventType="touchUpInside" id="ni3-39-RkO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ij1-xY-Ty1">
+                                <rect key="frame" x="20" y="323" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zr7-Ee-Rma"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1037,6 +1054,7 @@
                     <navigationItem key="navigationItem" id="edd-QU-Ie1"/>
                     <connections>
                         <outlet property="emailTextField" destination="1NY-cJ-rxj" id="hG6-jr-Ff3"/>
+                        <outlet property="errorMessageLabel" destination="Ij1-xY-Ty1" id="YTx-du-3cW"/>
                         <outlet property="nameTextField" destination="MJZ-nO-NvD" id="hQC-W3-G1E"/>
                         <outlet property="passwordTextField" destination="h9l-lv-TBA" id="TXE-ec-yQJ"/>
                         <segue destination="ir2-XZ-ULD" kind="presentation" identifier="signUpToHomeSegue" modalPresentationStyle="fullScreen" id="XSr-Jz-buk"/>
