@@ -12,5 +12,6 @@ target 'homecooked' do
   pod 'Firebase/Storage'
   pod 'FirebaseUI/Storage'
   pod 'Firebase/Auth'
-
+  pod 'Kingfisher', '~> 7.0'
+  
 end

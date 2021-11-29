@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Kingfisher
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var profileImage: UIImageView!
@@ -19,6 +20,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     let imagePicker = UIImagePickerController()
     let userDefaults = UserDefaults()
     var storageRef: StorageReference!
+    var imageURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,19 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         emailTextField.text = user.email
         
         let reference = storageRef.child("\(user.uid).jpg")
-        profileImage.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderProfileImage.png"))
+        let placeholder = UIImage(named: "placeholderProfileImage.png")
+        
+        
+        reference.downloadURL { url, error in
+            if error != nil {
+                print("couldn't get download url")
+                self.profileImage.image = placeholder
+              } else {
+                self.imageURL = url
+                self.profileImage.kf.indicatorType = .activity
+                self.profileImage.kf.setImage(with: url, placeholder: placeholder)
+              }
+        }
         
         let userDocRef = Firestore.firestore().collection("users").document(user.uid)
         
@@ -133,6 +147,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         guard let imageData = image?.jpegData(compressionQuality: 1.0) else {return}
         guard let user = Auth.auth().currentUser else {return}
         storageRef.child("\(user.uid).jpg").putData(imageData)
+        
+        if let cacheKey = imageURL?.absoluteString {
+            ImageCache.default.removeImage(forKey: cacheKey)
+        }
         
         self.dismiss(animated: true, completion: nil)
     }

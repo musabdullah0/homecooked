@@ -43,15 +43,6 @@ class MealDetailsViewController: UIViewController {
         imageDisplay.clipsToBounds = true
         imageDisplay.contentMode = .scaleAspectFill
         
-//        mealName.text = displayMeal.title
-//        numPortions.text = String(displayMeal.portions)
-//        portionPrice.text = String(displayMeal.price)
-//        ingredientsList = displayMeal.ingredients
-//        print(displayMeal)
-////        ingredients.text = displayMeal.ingredients.joined(separator: ",")
-//        availableFrom.date =  displayMeal.available_from
-//        availableUntil.date = displayMeal.available_until
-        
         let clocation = CLLocation(latitude: displayMeal.location.latitude, longitude: displayMeal.location.longitude)
         
         CLGeocoder().reverseGeocodeLocation(clocation, completionHandler: {(placemarks, error) -> Void in
