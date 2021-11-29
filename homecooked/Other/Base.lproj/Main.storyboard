@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a4u-lt-XOl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a4u-lt-XOl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -178,7 +177,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MealCellIdentifier" rowHeight="90" id="7FI-f8-HLA" customClass="MealTableViewCell" customModule="homecooked" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="406" height="90"/>
+                                                <rect key="frame" x="0.0" y="28" width="406" height="90"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7FI-f8-HLA" id="EMP-Ww-jGU">
                                                     <rect key="frame" x="0.0" y="0.0" width="406" height="90"/>
@@ -320,7 +319,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostedMealCellIdentifier" rowHeight="90" id="8eA-xt-sc4" customClass="PostedMealTableViewCell" customModule="homecooked" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="374" height="90"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8eA-xt-sc4" id="3w8-Or-EzY">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="90"/>
@@ -376,6 +375,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nqm-Wj-MqH" id="ngK-6E-IMe"/>
+                                    <outlet property="delegate" destination="nqm-Wj-MqH" id="y81-Fs-wTy"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Posted Meals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9y-BA-HkW">
                                 <rect key="frame" x="20" y="443" width="296" height="39"/>
@@ -397,7 +400,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CartCellIdentifier" rowHeight="90" id="UdK-fT-nH2" customClass="CartTableViewCell" customModule="homecooked" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="374" height="90"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UdK-fT-nH2" id="l5o-Cl-JYY" customClass="CartTableViewCell" customModule="homecooked" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="90"/>
@@ -460,6 +463,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="nqm-Wj-MqH" id="OHh-vg-Hjk"/>
+                                    <outlet property="delegate" destination="nqm-Wj-MqH" id="FrR-qq-9xU"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dgP-v5-KQc"/>

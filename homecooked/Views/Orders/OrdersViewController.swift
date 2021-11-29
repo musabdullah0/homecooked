@@ -68,23 +68,25 @@ class OrdersViewController: UIViewController {
             return
         }
         snapshot.documentChanges.forEach { diff in
-            print(diff)
-            print(diff.document.data())
-            print(diff.document.documentID)
+
             if (diff.type == .added){
-                print("Printing dict:::", diff.document.data())
-                let customerID = diff.document.get("customer_id") as! String
-                if (customerID == Auth.auth().currentUser?.uid ){
+                
+                if let customerID = diff.document.get("customer_id") as? String,
+                   customerID == Auth.auth().currentUser?.uid {
                     
-                    let mealDocRef = mealsRef.document(diff.document.get("meal_id") as! String)
-                    mealDocRef.getDocument { (document, error) in
-                        if let document = document, document.exists {
-                            let mealToAdd = Meal(withDoc: document as! QueryDocumentSnapshot)
-                            self.cart.append(mealToAdd)
-                        } else {
-                            print("Document does not exist")
+                    if let meal_id = diff.document.get("meal_id") as? String {
+                        let mealDocRef = mealsRef.document(meal_id)
+                        mealDocRef.getDocument { (document, error) in
+                            if let document = document, document.exists {
+                                    let meal = Meal(withDoc: document)
+                                    print(meal)
+                                    self.cart.append(meal)
+                                } else {
+                                    print("Document does not exist")
+                                }
                         }
                     }
+                    
                 }
             }
             if (diff.type == .modified) {
