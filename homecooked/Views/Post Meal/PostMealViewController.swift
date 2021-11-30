@@ -78,7 +78,7 @@ class PostMealViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func parseIngredients(_ ingredients: String) -> [String] {
-        return ingredients.split{$0 == " " || $0 == ","}.map(String.init)
+        return ingredients.split{$0 == ","}.map(String.init)
     }
     
     func postMealToFirebase(title: String, portions: Int, price: Float, ingredients: [String], from: Date, until: Date, lat: Double, long: Double, uuid: String) {
