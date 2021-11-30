@@ -155,6 +155,12 @@ extension OrdersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Create Date Formatter
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm a"
+        
+        
         if (showingCart){
             let meal = cart[indexPath.row].meal
             let cell = tableView.dequeueReusableCell(withIdentifier: "CartCellIdentifier") as! CartTableViewCell
@@ -163,9 +169,7 @@ extension OrdersViewController: UITableViewDelegate, UITableViewDataSource {
             cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
             cell.mealTitle.text = meal.title
             cell.mealCost.text = "$\(meal.price)"
-            // Create Date Formatter
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YY, MMM d, hh:mm"
+            
             let fromStr = dateFormatter.string(from: meal.available_from)
             let untilStr = dateFormatter.string(from: meal.available_until)
             cell.mealStartTime.text = fromStr
@@ -194,9 +198,6 @@ extension OrdersViewController: UITableViewDelegate, UITableViewDataSource {
             cell.mealTitle.text = meal.title
             cell.mealCount.text = "\(posted[indexPath.row].count) order(s)"
             
-            // Create Date Formatter
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YY, MMM d, hh:mm"
             let fromStr = dateFormatter.string(from: meal.available_from)
             let untilStr = dateFormatter.string(from: meal.available_until)
             cell.mealStartTime.text = fromStr
@@ -238,5 +239,18 @@ extension OrdersViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var meal: Meal
+        if (showingCart) {
+            meal = cart[indexPath.row].meal
+        } else {
+            meal = posted[indexPath.row].meal
+        }
+        let destinationVC = self.storyboard?.instantiateViewController(identifier: "mealDetailsVC") as! MealDetailsViewController
+
+        destinationVC.displayMeal = meal
+        self.present(destinationVC, animated: true, completion: nil)
     }
 }
