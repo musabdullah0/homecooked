@@ -22,15 +22,15 @@ class OrdersViewController: UIViewController {
     var posted: [Meal] = []
     
     @IBOutlet weak var cartTableView: UITableView!
-    @IBOutlet weak var postedTableView: UITableView!
+//    @IBOutlet weak var postedTableView: UITableView!
     
     override func viewDidLoad() {
         
         cartTableView.delegate = self
         cartTableView.dataSource = self
         
-        postedTableView.delegate = self
-        postedTableView.dataSource = self
+//        postedTableView.delegate = self
+//        postedTableView.dataSource = self
         
         mealsRef = Firestore.firestore().collection("meals")
         ordersRef = Firestore.firestore().collection("orders")
@@ -141,7 +141,7 @@ class OrdersViewController: UIViewController {
                 }
             }
             DispatchQueue.main.async {
-                self.postedTableView.reloadData()
+//                self.postedTableView.reloadData()
             }
         }
     }
@@ -158,7 +158,7 @@ extension OrdersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (tableView == self.cartTableView){
+//        if (tableView == self.cartTableView){
             let meal = cart[indexPath.row]
             print("showing meal", indexPath.row)
             print(meal)
@@ -189,24 +189,24 @@ extension OrdersViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             return cell
-        }
-        else {
-            let meal = posted[indexPath.row]
-            let cell = postedTableView.dequeueReusableCell(withIdentifier: "PostedMealCellIdentifier") as! PostedMealTableViewCell
-
-            let reference = storageRef.child("\(meal.meal_id).jpg")
-            cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
-            cell.mealTitle.text = meal.title
-            // Create Date Formatter
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YY, MMM d, hh:mm"
-            let fromStr = dateFormatter.string(from: meal.available_from)
-            let untilStr = dateFormatter.string(from: meal.available_until)
-            cell.mealStartTime.text = fromStr
-            cell.mealEndTime.text = untilStr
-            
-            return cell
-        }
+//        }
+//        else {
+//            let meal = posted[indexPath.row]
+//            let cell = postedTableView.dequeueReusableCell(withIdentifier: "PostedMealCellIdentifier") as! PostedMealTableViewCell
+//
+//            let reference = storageRef.child("\(meal.meal_id).jpg")
+//            cell.mealImage.sd_setImage(with: reference, placeholderImage: UIImage(named: "placeholderMeal.png"))
+//            cell.mealTitle.text = meal.title
+//            // Create Date Formatter
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "YY, MMM d, hh:mm"
+//            let fromStr = dateFormatter.string(from: meal.available_from)
+//            let untilStr = dateFormatter.string(from: meal.available_until)
+//            cell.mealStartTime.text = fromStr
+//            cell.mealEndTime.text = untilStr
+//
+//            return cell
+//        }
         
     }
 }
