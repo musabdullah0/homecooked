@@ -52,7 +52,7 @@ class Meal {
         self.location = withDoc.get("location") as? FirebaseFirestore.GeoPoint ?? defaultLocation
     }
     
-    func updateProperties(withDoc: QueryDocumentSnapshot) {
+    func updateProperties(withDoc: DocumentSnapshot) {
         self.meal_id = withDoc.documentID
         self.chef_id = withDoc.get("chef_id") as? String ?? "no chef"
         

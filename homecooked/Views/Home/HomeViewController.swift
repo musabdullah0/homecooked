@@ -149,16 +149,3 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return categories.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "category", for: indexPath) as! CategoryCollectionViewCell
-//        cell.categoryButton.setTitle(categories[indexPath.row], for: .normal)
-//        return cell
-//    }
-//
-//
-//}

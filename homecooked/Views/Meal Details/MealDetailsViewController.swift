@@ -101,10 +101,6 @@ class MealDetailsViewController: UIViewController {
                 self.sendAlert()
             } else {
                 print("success")
-                self.displayMeal.portions -= 1
-                if (self.displayMeal.portions == 0) {
-                    Firestore.firestore().collection("meals").document(self.displayMeal.meal_id).delete()
-                }
                 self.dismiss(animated: true, completion: nil)
             }
         }
