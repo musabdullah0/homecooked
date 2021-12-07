@@ -1,4 +1,4 @@
-# Final
+# Our final turnin README is attached in this repo as: README.pdf
 
 Landing screen/UI: Musab, Max, Keegan, Sejal
 - Includes initial screen to display while the app is loading as well as colors, segues, general UI design.
